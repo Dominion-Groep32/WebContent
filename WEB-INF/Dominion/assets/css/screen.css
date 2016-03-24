@@ -1,0 +1,50 @@
+/*---------------------*/
+/*    HTML ELEMENTS (deze geldt voor elke pagina vd site (deze heeft er meerdere))*/
+/*---------------------*/
+@font-face {
+    font-family: 'Cinzel-Regular';
+    src: url('../../assets/fonts/Cinzel-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family:Helvetica Neue, Arial, sans-serif;
+    font-size: 3rem;
+    background: url("../../images/castle-background2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+ul li a {
+    font-family: "Cinzel-Regular", "Times New Roman", serif;
+    margin:auto;
+    display:block;
+    text-decoration: none;
+}
+
+ul li {
+    margin-bottom: 30px;
+
+}
+/*---------------------*/
+/*  REUSABLE CLASSES   */
+/*---------------------*/
+
+.wrapper {
+    text-align: center;
+    margin-top: 250px;
+}
+
+
+/*---------------------*/
+/* CONTAINING ELEMENTS */
+/*---------------------*/
+
+/*------------------------*/
+/* PAGE SPECIFIC ELEMENTS (bvb als je een verkoop pagina, homepagina hebt enz)*/
+/*------------------------*/
