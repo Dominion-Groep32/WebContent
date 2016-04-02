@@ -21,4 +21,14 @@
     <url-pattern>/home</url-pattern>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>homeServlet</display-name>
+    <servlet-name>homeServlet</servlet-name>
+    <servlet-class>Controllers.homeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>homeServlet</servlet-name>
+    <url-pattern>/homeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
