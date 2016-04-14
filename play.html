@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dominion: play</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
+    <link rel="stylesheet" href="assets/css/screen.css" type="text/css"/>
+
+</head>
+<body>
+
+<a href="index.html">
+    <img src="assets/media/building-3.png" id="home" alt="home">
+</a>
+
+<form action="#" method="post">
+
+    <fieldset>
+
+        <h1>Select your type of game</h1>
+
+        <div class="wrapper">
+            <input type="radio" id="classic" value="classic" name="gameType"/>
+            <label for="classic">Classic</label>
+
+            <input type="radio" id="expansion" value="expansion" name="gameType"/>
+            <label for="expansion">Expansion</label>
+        </div>
+
+        <h1>Select your number of players</h1>
+
+        <div id="numberOfPlayers">
+
+            <label>
+                <input type="radio" id="2players" value="2players" name="number"/>
+                <img src="assets/media/2players.png" width="55" height="60" alt="2players" class="player"/>
+            </label>
+
+            <label>
+                <input type="radio" id="3players" value="3players" name="number"/>
+                <img src="assets/media/3players.png" width="55" height="60" alt="3players" class="player"/>
+            </label>
+
+
+            <label>
+                <input type="radio" id="4players" value="4players" name="number">
+                <img src="assets/media/4players.png" width="55" height="60" alt="4players" class="player"/>
+            </label>
+
+            <label>
+                <input type="radio" id="5players" value="5players" name="number">
+                <img src="assets/media/5players.png" width="55" height="60" alt="5players" class="player"/>
+            </label>
+
+            <label>
+                <input type="radio" id="6players" value="6players" name="number">
+                <img src="assets/media/6players.png" width="55" height="60" alt="6players" class="player"/>
+            </label>
+
+        </div>
+
+
+        <h1>Give your players a name</h1>
+
+        <div id="nameOfPlayers">
+            <div>
+                <label>Player 1:</label>
+                <input type="text" id="player1" name="player1" placeholder="Firstname Lastname"/>
+            </div>
+
+
+            <div>
+                <label>Player 2:</label>
+                <input type="text" id="player2" name="player2" placeholder="Firstname Lastname"/>
+            </div>
+
+
+            <div>
+                <label>Player 3:</label>
+                <input type="text" id="player3" name="player3" placeholder="Firstname Lastname"/>
+            </div>
+
+            <div>
+                <label>Player 4:</label>
+                <input type="text" id="player4" name="player4" placeholder="Firstname Lastname"/>
+            </div>
+
+            <div>
+                <label>Player 5:</label>
+                <input type="text" id="player5" name="player5" placeholder="Firstname Lastname"/>
+            </div>
+
+            <div>
+                <label>Player 6:</label>
+                <input type="text" id="player6" name="player6" placeholder="Firstname Lastname"/>
+            </div>
+        </div>
+
+
+        <button type="submit" id="submit">Let's play!</button>
+
+    </fieldset>
+</form>
+
+
+<script src="assets/js/jquery-2.1.4.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
