@@ -10,18 +10,6 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description>homepage</description>
-    <display-name>homeController</display-name>
-    <servlet-name>homeController</servlet-name>
-    <servlet-class>Controllers.homeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>homeController</servlet-name>
-    <url-pattern>/homeController</url-pattern>
-    <url-pattern>/home</url-pattern>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <description></description>
     <display-name>homeServlet</display-name>
     <servlet-name>homeServlet</servlet-name>
@@ -30,5 +18,15 @@
   <servlet-mapping>
     <servlet-name>homeServlet</servlet-name>
     <url-pattern>/homeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DominionServlet</display-name>
+    <servlet-name>DominionServlet</servlet-name>
+    <servlet-class>Controllers.Dominion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DominionServlet</servlet-name>
+    <url-pattern>/DominionServlet</url-pattern>
   </servlet-mapping>
 </web-app>
