@@ -24,6 +24,7 @@ body {
     height: 100%;
 }
 
+/*Home button (castle)*/
 #home {
     background: url("../media/button.png") no-repeat;
     background-size: 70px 50px;
@@ -80,12 +81,15 @@ button {
 
 
 /*---------------------*/
-/*   play.html
+/* PLAY.HTML
 /*---------------------*/
+.hide {
+    display: none;
+}
 
 
-fieldset h1 {
-    margin-top: 40px;
+fieldset h1, #wrap h1 {
+    margin-top: 30px;
     margin-bottom: 20px;
     text-align: center;
     font-weight: 700;
@@ -95,7 +99,7 @@ fieldset h1:first-of-type {
     margin-top: 90px;
 }
 
-fieldset, .tab-content, .wrap {
+fieldset, .tab-content, #wrap {
      background-image: url(../media/perkament_6horizontaal.png);
      background-repeat:no-repeat;
      margin: auto;
@@ -103,27 +107,14 @@ fieldset, .tab-content, .wrap {
      height: 800px;
  }
 
-#nameOfPlayers label {
-    margin-right: 10px;
-}
-
-
-#nameOfPlayers {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#nameOfPlayers > div {
-    margin-bottom: 20px;
-}
-
 /* Font aanpassen van placeholder*/
 ::-webkit-input-placeholder {font-family: 'Chantilli', "Times New Roman", serif}
 ::-moz-placeholder          {font-family: 'Chantilli', "Times New Roman", serif} /* Firefox 19+ */
 :-moz-placeholder           {font-family: 'Chantilli', "Times New Roman", serif} /* Firefox 18- */
 :-ms-input-placeholder      {font-family: 'Chantilli', "Times New Roman", serif}
 
+
+/*Number of players*/
 #numberOfPlayers {
     text-align: center;
 }
@@ -137,7 +128,7 @@ label + label {
     margin-left: 12px;
 }
 
-label > input{ /* HIDE RADIOBUTTON */
+label > input{ /* HIDE RADIOBUTTON NUMBER OF PLAYERS*/
     visibility: hidden;
     position: absolute;
 }
@@ -148,15 +139,37 @@ label > input + img:hover {
 
 label > input + img {
     opacity: 0.5;
+    width: 55px;
+    height: 65px;
+    padding: 5px;
 }
 
 label > input:checked + img {
     opacity: 1;
 }
 
+/* Name of players */
+#nameOfPlayers label {
+    margin-right: 10px;
+}
+
+#nameOfPlayers {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#nameOfPlayers > div {
+    margin-bottom: 20px;
+}
+
+#nameOfPlayers > div > input {
+    border-radius: 4px;
+    padding: 2px;
+}
 
 /*---------------------*/
-/*  gamerules.html
+/*  GAMERULES.HTML
 /*---------------------*/
 
 #engels, #nederlands {
@@ -223,17 +236,17 @@ label > input:checked + img {
     display:inline-block;
     font-size:16px;
     font-weight:600;
-    color:rgba(182, 181, 153, 2);
+    color: #4c4c4c;
     transition:all linear 0.15s;
 }
 
 .tab-links a:hover {
-    color:#4c4c4c;
+    color:rgba(182, 181, 153, 2);
     text-decoration:none;
 }
 
 li.active a, li.active a:hover {
-    color:#4c4c4c;
+    color:rgba(182, 181, 153, 2);
 }
 
 .tab {
@@ -244,3 +257,38 @@ li.active a, li.active a:hover {
     display:block;
 }
 
+/* LEADERBOARD.HTML */
+
+#wrap h1 {
+    padding-top: 100px;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+}
+
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+div.panel.show {
+    display: block !important;
+}
