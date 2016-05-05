@@ -1,0 +1,128 @@
+
+/*   GAME INTERFACE  */
+
+/*
+body {
+    background-size: cover;
+    background: #464646 url("../../images/wallup-53677.jpg") no-repeat fixed center center;
+}
+
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+#container {
+    margin: 0 auto;
+}
+
+
+#rightBoard {
+    !*float: right;*!
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+#leftBoard {
+    !*float: right;*!
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+#leftBoard img {
+    position: absolute;
+    width: 7%;
+}
+
+#remainingCards {
+    width:15%;
+}
+
+#treasureCards {
+
+}
+
+#treasureCards img {
+    width:30%;
+}
+
+img {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    width: 10%;
+}
+
+#handCards {
+    position: absolute;
+     bottom: 0;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+#deckCards {
+    margin-left: auto;
+    margin-right: auto;
+}*/
+body {
+    background-size: cover;
+    background: #464646 url("../../images/wallup-53677.jpg") no-repeat fixed center center;
+}
+
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+img {
+    width: 12%;
+    padding-left: 5px;
+}
+
+#usernames {
+    background-image: url(../media/buttonplayer.png);
+    background-repeat: no-repeat;
+    width: 11%;
+}
+
+#deckCards {                        /*Actionkaarten enz bovenaan midden*/
+  position: absolute;
+   left: 30%;
+
+}
+
+#handCards {                     /*Deze heb je momenteel in je hand: centraal onder*/
+    position: absolute;
+    left: 30%;
+    top: 70%;
+}
+
+#treasureCards {                    /*Dit zijn de munten die je rechts kan kopen*/
+    position: absolute;
+    left: 85%;
+    top: 5%;
+}
+
+#treasureCards img {
+    width: 35%;
+}
+
+#remainingCards img {
+    width: 20%;
+}
+
+#remainingCards {
+    position: absolute;
+    top: 70%;
+}
