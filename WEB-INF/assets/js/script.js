@@ -1,24 +1,8 @@
-$(document).ready(function () {
-    generateSrc();
-    changeLanguage();
-    makeDeck();
-    $('#submit').on('click', dataStorage);
-    $('#numberOfPlayers').on('change', dynamicInput);
-
-    //$("#handCards").on('click', test);
-
-    //$("#card1").on('click',function(){
-    //    $("#card1").animate({bottom: '+=160px'}, 500);
-    //    alert("hello!");
-    //})
-});
-
-
 //Localstorage of options
 var dataStorage = function (event) {
-    alert("Je wordt hierna normaal doorgestuurd naar spel");
+    //alert("Je wordt hierna normaal doorgestuurd naar spel");
 
-    event.preventDefault();
+    //event.preventDefault();
 
     var gameOptions = {
         gameType: $('input[name=gameType]:checked').val(),
@@ -72,8 +56,8 @@ var changeLanguage = function () {
  * Created by Maxim
  */
 
-var deckCardsArray = ['adventurer', 'alchemist', 'ambassador', 'apothecary', 'apprentice', 'baron', 'bazaar', 'blackmarket', 'bridge', 'bureaucrat', 'caravan', 'cellar', 'chancellor', 'chapel'];
-var handCardsArray = ['copper', 'silver', 'gold', 'smithy', 'councilroom'];
+var deckCardsArray = ['adventurer', 'alchemist', 'ambassador', 'bureaucrat', 'cellar', 'chancellor', 'chapel', 'councilroom', 'feast', 'festival', 'gardens', 'library', 'market', 'mine', 'moat', 'moneylender', 'smithy', 'spy', 'thief', 'throneroom', 'village', 'witch', 'woodcutter', 'workshop'];
+var handCardsArray = ['copper', 'copper', 'estate', 'copper', 'copper', 'estate', 'copper', 'copper', 'estate', 'copper'];
 
 var makeDeck = function (e) {
 
@@ -86,14 +70,11 @@ var makeDeck = function (e) {
 
     //Generate deckCards
     for (var i = 0, len = 10; i < len; i++) {
-
         var html = '';
 
         if (i == 5) {
-
             html += "<br />";
         }
-
 
         //Generate img src
         var src = 'images/small/' + deckCardsArray[i] + '.png';
@@ -112,7 +93,7 @@ var makeDeck = function (e) {
         //Generate img src
         var src = 'images/' + handCardsArray[i] + '.jpg';
         console.log(src);
-        html += '<img alt="' + handCardsArray[i] + '"  title="' + handCardsArray[i] + '" src="' + src + '" />';
+        html += '<img alt="' + handCardsArray[i] + '"  title="' + handCardsArray[i] + '" src="' + src + '"  id="' + handCardsArray[i] + '"/>';
         $("#handCards").append(html);
 
         console.log(html);
@@ -141,4 +122,34 @@ var makeDeck = function (e) {
  alert("hello!");
  break;
  }
- };*/
+};*/
+
+var cardsInMiddle = function(e){
+    var currentCardName = this.id;
+
+    alert(currentCardName);
+};
+
+var infoDeckCards = function(e) {
+
+};
+
+var enlargeCards = function(e) {
+    
+};
+
+$(document).ready(function () {
+    generateSrc();
+    changeLanguage();
+    makeDeck();
+    $('#submit').on('click', dataStorage);
+    $('#numberOfPlayers').on('change', dynamicInput);
+    $("#handCards img").on('click',cardsInMiddle);
+
+    //$("#handCards").on('click', test);
+
+    //$("#card1").on('click',function(){
+    //    $("#card1").animate({bottom: '+=160px'}, 500);
+    //    alert("hello!");
+    //})
+});

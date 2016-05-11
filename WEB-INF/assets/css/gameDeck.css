@@ -1,10 +1,32 @@
-
 /*   GAME INTERFACE  */
 
-/*
 body {
     background-size: cover;
     background: #464646 url("../../images/wallup-53677.jpg") no-repeat fixed center center;
+}
+
+#container {
+    width: auto;
+}
+
+#left {
+    width: 20%;
+    height: 40px;
+    float: left;
+}
+
+#middle {
+    width: 60%;
+    height: 40px;
+    margin-left: 30.5%;
+}
+
+#right {
+    width: 20%;
+    height: 40px;
+    float: right;
+    margin-top: -40px;
+    margin-right: 3%;
 }
 
 .cf:before, .cf:after {
@@ -14,115 +36,35 @@ body {
 
 .cf:after {
     clear: both;
-}
-
-#container {
-    margin: 0 auto;
-}
-
-
-#rightBoard {
-    !*float: right;*!
-    position: absolute;
-    top: 30px;
-    right: 30px;
-}
-
-#leftBoard {
-    !*float: right;*!
-    position: absolute;
-    top: 30px;
-    left: 30px;
-}
-
-#leftBoard img {
-    position: absolute;
-    width: 7%;
-}
-
-#remainingCards {
-    width:15%;
-}
-
-#treasureCards {
-
-}
-
-#treasureCards img {
-    width:30%;
 }
 
 img {
     padding-top: 5px;
     padding-left: 5px;
     padding-bottom: 5px;
-    width: 10%;
+    width: 150px;
 }
-
-#handCards {
-    position: absolute;
-     bottom: 0;
-     margin-left: auto;
-     margin-right: auto;
- }
 
 #deckCards {
     margin-left: auto;
     margin-right: auto;
-}*/
-body {
-    background-size: cover;
-    background: #464646 url("../../images/wallup-53677.jpg") no-repeat fixed center center;
 }
 
-.cf:before, .cf:after {
-    content: "";
-    display: table;
-}
-
-.cf:after {
-    clear: both;
-}
-
-
-img {
-    width: 12%;
-    padding-left: 5px;
+#handCards, #remainingCards {
+    position: fixed;
+    bottom: 0%;
+    display: inline-block;
 }
 
 #usernames {
-    background-image: url(../media/buttonplayer.png);
-    background-repeat: no-repeat;
-    width: 11%;
-}
-
-#deckCards {                        /*Actionkaarten enz bovenaan midden*/
-  position: absolute;
-   left: 30%;
-
-}
-
-#handCards {                     /*Deze heb je momenteel in je hand: centraal onder*/
+    display: inline-block;
     position: absolute;
-    left: 30%;
-    top: 70%;
 }
 
-#treasureCards {                    /*Dit zijn de munten die je rechts kan kopen*/
-    position: absolute;
-    left: 85%;
-    top: 5%;
+#victoryCards {
+    margin-left: 80%;
 }
 
-#treasureCards img {
-    width: 35%;
-}
+#treasureCards {
 
-#remainingCards img {
-    width: 20%;
-}
-
-#remainingCards {
-    position: absolute;
-    top: 70%;
 }
