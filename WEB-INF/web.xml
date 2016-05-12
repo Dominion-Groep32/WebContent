@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Dominion</display-name>
@@ -10,59 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description>homepage</description>
-    <display-name>homeController</display-name>
-    <servlet-name>homeController</servlet-name>
-    <servlet-class>Controllers.homeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>homeController</servlet-name>
-    <url-pattern>/homeController</url-pattern>
-    <url-pattern>/home</url-pattern>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>homeServlet</display-name>
-    <servlet-name>homeServlet</servlet-name>
-    <servlet-class>Controllers.homeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>homeServlet</servlet-name>
-    <url-pattern>/homeServlet</url-pattern>
-  </servlet-mapping>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>Dominion</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>homeServlet</display-name>
-    <servlet-name>homeServlet</servlet-name>
-    <servlet-class>Controllers.homeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>homeServlet</servlet-name>
-    <url-pattern>/homeServlet</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>DominionServlet</display-name>
     <servlet-name>DominionServlet</servlet-name>
-    <servlet-class>Controllers.Dominion</servlet-class>
+    <servlet-class>Controllers.DominionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DominionServlet</servlet-name>
     <url-pattern>/DominionServlet</url-pattern>
   </servlet-mapping>
->>>>>>> 2f4de1e686ffb32084910ffb90f7f4c047398510
 </web-app>

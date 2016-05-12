@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dominion: play</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
+    <link rel="stylesheet" href="assets/css/screen.css" type="text/css"/>
+
+</head>
+<body>
+
+<a href="index.html">
+    <img src="assets/media/building-3.png" id="home" alt="home">
+</a>
+
+<section id="step1">
+    <form action="#" method="post">
+
+        <fieldset>
+            <h1>Select your type of game</h1>
+
+            <div class="wrapper">
+                <input type="radio" id="classic" value="classic" name="gameType" checked="checked" required/>
+                <label for="classic">Classic</label>
+
+                <input type="radio" id="expansion" value="expansion" name="gameType" required/>
+                <label for="expansion">Expansion</label>
+            </div>
+
+            <h1>Select your number of players</h1>
+
+            <div id="numberOfPlayers">
+            </div>
+
+            <h1>Give your players a name</h1>
+
+            <div id="nameOfPlayers">
+            </div>
+
+            <button type="submit" id="submit"><a href="gameInterface.html">Let's play!</a></button>
+        </fieldset>
+    </form>
+</section>
+<section id="step2">
+
+
+</section>
+
+
+<script src="assets/js/jquery-2.1.4.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
