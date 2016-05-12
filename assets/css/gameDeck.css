@@ -18,15 +18,18 @@ body {
 #middle {
     width: 60%;
     height: 40px;
-    margin-left: 30.5%;
+    margin-left: 30%;
+}
+
+#middle img {
+    width: 15%;
 }
 
 #right {
-    width: 20%;
     height: 40px;
     float: right;
     margin-top: -40px;
-    margin-right: 3%;
+    margin-right: -14%;
 }
 
 .cf:before, .cf:after {
@@ -63,8 +66,23 @@ img {
 
 #victoryCards {
     margin-left: 80%;
+
 }
 
-#treasureCards {
+#victoryCards img {
+    width: 160%;
+}
 
+#right img {
+    width: 30%;
+    display: block;
+}
+
+#handCards img {
+    width: 10%;
+    padding-left: 1%;
+}
+
+#back {
+    width: 33%;
 }
