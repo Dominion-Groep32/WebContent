@@ -138,6 +138,39 @@ var enlargeCards = function(e) {
     
 };
 
+//-------------------AJAX-------------------
+var savePlayers = function(e) {
+	
+	switch (numberOfPlayers) {
+	case 3:
+		
+		break;
+		
+	case 4:
+		
+		break;
+
+	default:
+		
+		break;
+	}
+	
+    var spelerNaam = $("input#naam").val();
+    var parameters = {
+        spelerNaam: spelerNaam,
+        operation: "addPlayer"
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/Dominion/DominionServlet',
+        data: parameters,
+        type: 'GET'
+    }).done(function (response) {
+        console.log(response, JSON.parse(response));
+    });
+}
+//-------------------AJAX-------------------
+
 $(document).ready(function () {
     generateSrc();
     changeLanguage();
@@ -145,6 +178,8 @@ $(document).ready(function () {
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
     $("#handCards img").on('click',cardsInMiddle);
+    $('#sendName').on('click', savePlayers);
+    $('#submit').on('click', savePlayers);
 
     //$("#handCards").on('click', test);
 

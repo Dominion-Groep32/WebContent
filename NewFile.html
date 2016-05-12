@@ -1,41 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>AJAX TESTING</title>
+    <meta charset="ISO-8859-1">
+    <title>AJAX TESTING</title>
+   	<script src="assets/js/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-<script type="javascript/text">
-
-$(document).ready(function() {
-    $('#knop').click(function() {
-
-	var parameters = {
-		naam: 'jantje',
-		leeftijd: 13
-	};
-
-	$.ajax({
-		url: url,
-		data: parameters
-	}).done(function(response){
-		console.log(response) 
-		});
-    });
-});
-</script>
 
 <body>
-	<form>
-	    <div id="buttonDiv">
-	        <button type="Button" id="knop">Update Data</button>
-	    </div>
-	 
-	    <br><br>
-	 
-	    <div id="dataDiv">
-	        <h3> Some data</h3>
-	    </div>
-    </form>
+<form>
+    <input type="text" id="naam">
+    <button type="button" id="sendName">Send Name</button>
+</form>
 </body>
 </html>
