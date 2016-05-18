@@ -1,4 +1,10 @@
 /*   GAME INTERFACE  */
+@font-face {
+    font-family: 'Chantilli';
+    src: url("../../assets/fonts/chantelli_antiqua.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     background-size: cover;
@@ -18,7 +24,7 @@ body {
 #middle {
     width: 60%;
     height: 40px;
-    margin-left: 30%;
+    margin-left: 29%;
 }
 
 #middle img {
@@ -27,9 +33,9 @@ body {
 
 #right {
     height: 40px;
+    width: 17%;
     float: right;
     margin-top: -40px;
-    margin-right: -14%;
 }
 
 .cf:before, .cf:after {
@@ -45,7 +51,7 @@ img {
     padding-top: 5px;
     padding-left: 5px;
     padding-bottom: 5px;
-    width: 150px;
+    width: 108px;
 }
 
 #deckCards {
@@ -53,10 +59,15 @@ img {
     margin-right: auto;
 }
 
-#handCards, #remainingCards {
+#handCards {
     position: fixed;
     bottom: 0%;
     display: inline-block;
+}
+
+#handCards {
+    width: 75%;
+    margin-left: 2%;
 }
 
 #usernames {
@@ -83,6 +94,42 @@ img {
     padding-left: 1%;
 }
 
-#back {
-    width: 33%;
+#take {
+    float: right;
+}
+
+#playMoney, #endTurn {
+    font-family: 'Chantilli', "Times New Roman", serif;
+    background-image: url(../media/speelKaartKnop.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    height: 80px;
+    width: 75px;
+    position: absolute;
+}
+
+#playMoney {
+    right: 285px;
+    bottom: 15px;
+}
+
+#endTurn {
+    right: 285px;
+    bottom: 95px;
+}
+
+
+#playMoney:hover, #endTurn:hover {
+    color:rgba(182, 181, 153, 2);
+}
+
+#remainingCards {
+    position: absolute;
+    bottom: 0px;
+    margin-left: 98px;
+    width: 82%;
 }

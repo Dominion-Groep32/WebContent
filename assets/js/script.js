@@ -19,11 +19,12 @@ var dataStorage = function (event) {
 };
 
 //Hide and show the name inputs according to number of players
+var numberOfPlayers
 var dynamicInput = function () {
-    var numberOfPlayers = $("input[name=number]:checked").val();
+    numberOfPlayers = $("input[name=number]:checked").val();
     var html = "";
     for (var i = 0; i < numberOfPlayers; i++) {
-        html += "<div><label>'Player " + (i + 1) + ":</label><input type='text' required placeholder='Firstname Lastname' name='player" + (i + 1) + "' /></div>"
+        html += "<div><label>'Player " + (i + 1) + ":</label><input type='text' required placeholder='Firstname Lastname' id='player" + (i + 1) + "' /></div>"
     }
     $("#nameOfPlayers").html(html);
 
@@ -55,15 +56,14 @@ var changeLanguage = function () {
 /**
  * Created by Maxim
  */
-
 var deckCardsArray = ['adventurer', 'alchemist', 'ambassador', 'bureaucrat', 'cellar', 'chancellor', 'chapel', 'councilroom', 'feast', 'festival', 'gardens', 'library', 'market', 'mine', 'moat', 'moneylender', 'smithy', 'spy', 'thief', 'throneroom', 'village', 'witch', 'woodcutter', 'workshop'];
-var handCardsArray = ['copper', 'copper', 'estate', 'copper', 'copper', 'estate', 'copper', 'copper', 'estate', 'copper'];
+var handCardsArray = ['koper', 'koper', 'landgoed', 'koper', 'koper', 'landgoed', 'koper', 'koper', 'landgoed', 'koper'];
 
 var makeDeck = function (e) {
-
     deckCardsArray.sort(function () {
         return 0.5 - Math.random()
     });
+    
     handCardsArray.sort(function () {
         return 0.5 - Math.random()
     });
@@ -78,11 +78,11 @@ var makeDeck = function (e) {
 
         //Generate img src
         var src = 'images/small/' + deckCardsArray[i] + '.png';
-        console.log(src);
+        //console.log(src);
         html += '<img alt="' + deckCardsArray[i] + '"  title="' + deckCardsArray[i] + '" src="' + src + '" />';
         $("#deckCards").append(html);
 
-        console.log(html);
+        //console.log(html);
     }
 
     //Generate handCards
@@ -92,73 +92,57 @@ var makeDeck = function (e) {
 
         //Generate img src
         var src = 'images/' + handCardsArray[i] + '.jpg';
-        console.log(src);
+        //console.log(src);
         html += '<img alt="' + handCardsArray[i] + '"  title="' + handCardsArray[i] + '" src="' + src + '"  id="' + handCardsArray[i] + '"/>';
         $("#handCards").append(html);
 
-        console.log(html);
+        //console.log(html);
     }
 };
 
-/*var test = function(e){
-
- var currentCard = $(this).attr("id");
-
- switch (currentCard) {
- case "card1":
- $("#card1").animate({bottom: '+=160px'}, 500);
- break;
- case "card2":
- $("#card2").animate({bottom: '+=160px'}, 500);
- break;
- case "card3":
- $("#card3").animate({bottom: '+=160px'}, 500);
- break;
- case "card4":
- $("#card4").animate({bottom: '+=160px'}, 500);
- break;
- case "card5":
- $("#card5").animate({bottom: '+=160px'}, 500);
- alert("hello!");
- break;
- }
-};*/
-
 var cardsInMiddle = function(e){
-    var currentCardName = this.id;
-
-    alert(currentCardName);
+    var currentCardName = this.id;    
+    $('#playedCards').append(this);
+    $('#message').empty();
+    $('#message').append('Player 1 heeft een ' + currentCardName + ' kaart gespeeld.');
 };
 
-var infoDeckCards = function(e) {
-
-};
-
-var enlargeCards = function(e) {
-    
-};
+//var responseTest = function(String testing[]) {
+//	console.log(testing);
+//};
 
 //-------------------AJAX-------------------
-var savePlayers = function(e) {
+var spelersOpslaan = function(e) {
 	
-	switch (numberOfPlayers) {
-	case 3:
-		
-		break;
-		
-	case 4:
-		
-		break;
-
-	default:
-		
-		break;
-	}
-	
-    var spelerNaam = $("input#naam").val();
+    var spelerNaam1 = $("input#player1").val();
+    var spelerNaam2 = $("input#player2").val();
+    
     var parameters = {
-        spelerNaam: spelerNaam,
-        operation: "addPlayer"
+        speler1: spelerNaam1,
+        speler2: spelerNaam2,
+        operation: "spelerToevoegen"
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/Dominion/DominionServlet',
+        data: parameters,
+        type: 'GET'
+    }).done(function (response) {
+    	console.log(response, JSON.parse(response));
+    	//var response = JSON.parse(response);
+    	//response["Speler1"];
+        //var weergekregen = JSON.parse(response);
+        //for(x in weergekregen){
+        //	console.log(weergekregen[x]);
+        //}
+    });
+}
+
+
+var huidigeSpeler = function(e) {
+	
+    var parameters = {
+        operation: "huidigeSpeler"
     };
 
     $.ajax({
@@ -167,6 +151,8 @@ var savePlayers = function(e) {
         type: 'GET'
     }).done(function (response) {
         console.log(response, JSON.parse(response));
+        var test = response;
+        responseTest(test);
     });
 }
 //-------------------AJAX-------------------
@@ -177,14 +163,10 @@ $(document).ready(function () {
     makeDeck();
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
-    $("#handCards img").on('click',cardsInMiddle);
-    $('#sendName').on('click', savePlayers);
-    $('#submit').on('click', savePlayers);
-
-    //$("#handCards").on('click', test);
-
-    //$("#card1").on('click',function(){
-    //    $("#card1").animate({bottom: '+=160px'}, 500);
-    //    alert("hello!");
-    //})
+    $('#handCards img').on('click', cardsInMiddle);
+    $('#submitPlayers').on('click', spelersOpslaan).on('click', huidigeSpeler);
+    //$('#playMoney').on('click', responseTest);
+    
+    
+    //$('#huidigeKaarten').on('click', kaartenInHand);
 });
