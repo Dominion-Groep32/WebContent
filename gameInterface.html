@@ -9,6 +9,7 @@
 
     <script src="assets/js/jquery-2.1.4.min.js"></script>
     <script src="assets/js/script.js"></script>
+    
 </head>
 <body>
 <div id="container">
@@ -63,6 +64,26 @@
         <div id="options"></div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+    	 var parameters = {
+    		        operation: "huidigeSpeler"
+    		    };
+    	$.ajax({
+            url: 'http://localhost:8080/Dominion/DominionServlet',
+            data: parameters,
+            type: 'GET'
+        }).done(function (response) {
+        
+            console.log(response, JSON.parse(response));
+            var result = JSON.parse(response);
+            console.log(result);
+            console.log("hier kom ik in")
+            kaartenInHand(result);
+            
+         
+        });
+    });
+    </script>
 </body>
 </html>
