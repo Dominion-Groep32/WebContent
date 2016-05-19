@@ -168,9 +168,8 @@ var huidigeSpeler = function(e) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
-        console.log(response, JSON.parse(response));
-        var result = JSON.parse(response);
-        console.log(result);
+    	
+        var result = JSON.parse(response);	
         kaartenInHand(result);
         
      
