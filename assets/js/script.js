@@ -72,13 +72,7 @@ var deckCardsArray = ['adventurer', 'alchemist', 'ambassador', 'bureaucrat', 'ce
 var handCardsArray = ['koper', 'koper', 'landgoed', 'koper', 'koper', 'landgoed', 'koper', 'koper', 'landgoed', 'koper'];
 
 var makeDeck = function (e) {
-    deckCardsArray.sort(function () {
-        return 0.5 - Math.random()
-    });
-    
-    handCardsArray.sort(function () {
-        return 0.5 - Math.random()
-    });
+ 
 
     //Generate deckCards
     for (var i = 0, len = 10; i < len; i++) {
@@ -88,9 +82,8 @@ var makeDeck = function (e) {
             html += "<br />";
         }
 
-        //Generate img src
+      
         var src = 'images/small/' + deckCardsArray[i] + '.png';
-        //console.log(src);
         html += '<img alt="' + deckCardsArray[i] + '"  title="' + deckCardsArray[i] + '" src="' + src + '" />';
         $("#deckCards").append(html);
        
@@ -103,22 +96,24 @@ var makeDeck = function (e) {
 };
 
 var kaartenInHand = function(response){
-	
-	//split functie gebruiken
 	console.log("hier kom ik ook in");
-	 //var lengte = response.length();
-	  /*for (var i = 0;  i < 5; i++) {
-		  	console.log(response[i].toString())
+	  for (var i = 0;  i < 5; i++) {
+		 
 	        var html = '';
-	        var src = 'images/' + response[i].toString() + '.jpg';
-	        html += '<img alt="' + response[i].toString() + '"  title="' + response[i].toString() + '" src="' + src + '"  id="' + response[i].toString() + '"/>';
+	        var src = 'images/' + response[i] + '.jpg';
+	        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
 	        $("#handCards").append(html);
-
-	        console.log("dit is een goede string"+html);
 	    }
-	    */
-	$("#handCards").html("dit is de test als hij hem vindt")
 }
+
+var actieKaartenGeneren = function(repsonse){
+	for (var i = 0;  i < 10; i++) {
+        var html = '';
+        var src = 'images/' + response[i].toString() + '.jpg';
+        html += '<img alt="' + response[i].toString() + '"  title="' + response[i].toString() + '" src="' + src + '"  id="' + response[i].toString() + '"/>';
+        $("#deckCards").append(html);
+    }
+	}
 
 var cardsInMiddle = function(e){
     var currentCardName = this.id;    
@@ -156,7 +151,6 @@ var spelersOpslaan = function(e) {
         type: 'GET'
     }).done(function (response) {
     	huidigeSpeler();
-    	console.log(response, JSON.parse(response));
     	
     	
     });
@@ -177,7 +171,6 @@ var huidigeSpeler = function(e) {
         console.log(response, JSON.parse(response));
         var result = JSON.parse(response);
         console.log(result);
-        console.log("hier kom ik in")
         kaartenInHand(result);
         
      
@@ -214,10 +207,8 @@ $(document).ready(function () {
     $('#handCards img').on('click', cardsInMiddle);
     $('#deckCards img').on('click', gekozenKaart);
     $('#submitPlayers').on('click', spelersOpslaan)
-    //$('#submitPlayers').on('click', huidigeSpeler);
-    //$('#playMoney').on('click', responseTest);
+    $('#submitPlayers').on('click', huidigeSpeler);
+   // $('#submitPlayers').on('click', actieKaartenGeneren);
 	$("button").on("click", pressSubmit);
-    
-    
-    //$('#huidigeKaarten').on('click', kaartenInHand);
+
 });
