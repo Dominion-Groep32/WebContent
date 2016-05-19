@@ -42,8 +42,10 @@ var dynamicInput = function () {
 
 //Generate the source of the images (shields)
 var generateSrc = function () {
+	
     for (var i = 2; i <= 4; i++) {
         $('#numberOfPlayers').append('<label><input type="radio" required value=' + [i] + ' name="number"/><img src="assets/media/' + [i] + '.png"/></label>');
+    
     }
  
 };
@@ -85,7 +87,7 @@ var actieKaartenGeneren = function(response){
         html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
      
         $("#deckCards").append(html);
-        console.log(html);
+        
     }
 	}
 
@@ -153,8 +155,27 @@ var geefKaartenInHand = function(e) {
      
     });
 }
+
+var geefHuidigeWaarden = function(e) {
+    var parameters = {
+        operation: "huidigeWaarden"
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/Dominion/DominionServlet',
+        data: parameters,
+        type: 'GET'
+    }).done(function (response) {
+        var result = JSON.parse(response);
+        console.log(result);
+        
+     
+    });
+}
 var actieKaarten = function (e){
-	 var parameters = { operation: "actieKaartenGeneren" };
+	 var parameters = { 
+			 operation: "actieKaartenGeneren" 
+				 };
 
 	 $.ajax({
 		 	url: 'http://localhost:8080/Dominion/DominionServlet',
@@ -182,15 +203,33 @@ var Kopen = function(kaart) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
-        console.log(response, JSON.parse(response));
+        var result = JSON.parse(response);
+      
+    });
+}
+
+var geefInfoOverKaart = function(response) {
+	 var gekozenKaart = this.id; 
+	 console.log(gekozenKaart);
+	
+    var parameters = {
+    	kaart: gekozenKaart,
+        operation: "infoOphalen"
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/Dominion/DominionServlet',
+        data: parameters,
+        type: 'GET'
+    }).done(function (response) {
         var result = JSON.parse(response);
         console.log(result);
+      
     });
 }
 
 var stopBeurt = function(e){
 var parameters = {
-    	
         operation: "stopBeurt"
     };
 
@@ -202,20 +241,27 @@ var parameters = {
     });
 }
 
+
+
+
 //
 //-------------------AJAX-------------------
 
 $(document).ready(function () {
     generateSrc();
     changeLanguage();
+  
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
-    $('#handCards img').on('click', cardsInMiddle);
-    $('#deckCards img').on('click', gekozenKaart);
     $('#submitPlayers').on('click', spelersOpslaan)
 	$("button").on("click", pressSubmit);
 	$('#endTurn').on("click",stopBeurt)
-	$('#endTurn').on("click",geefKaartenInHand)
+	$('#endTurn').on("click",geefKaartenInHand);
+	$('#endTurn').on("click",geefHuidigeWaarden );
+	//$('#').on('click', geefInfoOverKaart); VRAGEN
+	$('#handCards img').on('click', cardsInMiddle);
+	$('#deckCards img').on('click', gekozenKaart);
+	
 	
 
 });
