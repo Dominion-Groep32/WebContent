@@ -70,14 +70,13 @@ var changeLanguage = function () {
 
 var kaartenInHand = function(response){
 	console.log("hier kom ik ook in");
-	$("handCards").empty();
+	console.log("dit is de lengte van de kaarten in hand" + response);
+	$("#handCards").empty();
 	  for (var i = 0;  i < 5; i++) {
-		  	
 	        var html = '';
 	        var src = 'images/' + response[i] + '.jpg';
 	        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
-	        $("#handCards").append(html);
-	        
+	        $("#handCards").append(html);  
 	    }
 }
 
@@ -138,17 +137,17 @@ var spelersOpslaan = function(e) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
-    	huidigeSpeler();
+    	geefKaartenInHand();
+    	actieKaarten();
     	
     	
     });
 }
 
 
-var huidigeSpeler = function(e) {
-	
+var geefKaartenInHand = function(e) {
     var parameters = {
-        operation: "huidigeSpeler"
+        operation: "geefKaartenInHand"
     };
 
     $.ajax({
@@ -156,7 +155,6 @@ var huidigeSpeler = function(e) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
-       
         var result = JSON.parse(response);
         kaartenInHand(result);
         
@@ -164,21 +162,19 @@ var huidigeSpeler = function(e) {
     });
 }
 var actieKaarten = function (e){
-	 var parameters = {
-		        operation: "actieKaartenGeneren"
-		    };
+	 var parameters = { operation: "actieKaartenGeneren" };
 
-		    $.ajax({
-		        url: 'http://localhost:8080/Dominion/DominionServlet',
-		        data: parameters,
-		        type: 'GET'
-		    }).done(function (response) {
-		        var result = JSON.parse(response);
-		        console.log(result);
-		        actieKaartenGeneren(result);
-		        
-		     
-		    });
+	 $.ajax({
+		 	url: 'http://localhost:8080/Dominion/DominionServlet',
+	        data: parameters,
+	        type: 'GET'
+	    }).done(function (response) {
+		    	
+	        var result = JSON.parse(response);
+	        console.log(result);
+	        actieKaartenGeneren(result);
+		       
+	    });
 }
 
 var Kopen = function(kaart) {
@@ -200,6 +196,22 @@ var Kopen = function(kaart) {
         console.log(result);
     });
 }
+
+var stopBeurt = function(e){
+var parameters = {
+    	
+        operation: "stopBeurt"
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/Dominion/DominionServlet',
+        data: parameters,
+        type: 'GET'
+    }).done(function (response) {
+    });
+}
+
+
 //-------------------AJAX-------------------
 
 $(document).ready(function () {
@@ -210,8 +222,9 @@ $(document).ready(function () {
     $('#handCards img').on('click', cardsInMiddle);
     $('#deckCards img').on('click', gekozenKaart);
     $('#submitPlayers').on('click', spelersOpslaan)
-    $('#submitPlayers').on('click', huidigeSpeler);
-    $('#submitPlayers').on('click', actieKaarten);
 	$("button").on("click", pressSubmit);
+	$('#endTurn').on("click",stopBeurt)
+	$('#endTurn').on("click",geefKaartenInHand)
+	
 
 });
