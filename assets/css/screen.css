@@ -28,6 +28,7 @@ body {
 #home {
     background: url("../media/button.png") no-repeat;
     background-size: 70px 50px;
+    background-color: transparent;
     padding: 5px 15px 5px 15px ;
     width: 40px;
     height: 40px;
@@ -35,6 +36,11 @@ body {
     top: 15px;
     right: 10px;
 }
+
+.hide {
+    display: none;
+}
+
 
 /*---------------------*/
 /*    index.HTML
@@ -73,6 +79,9 @@ button {
     display: block;
     font-size: 16px;
     cursor: pointer;
+    right: 270px;
+    bottom: 270px;
+
 }
 
 .buttonindex:hover {

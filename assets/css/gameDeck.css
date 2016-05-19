@@ -1,35 +1,20 @@
 /*   GAME INTERFACE  */
+@font-face {
+    font-family: 'Chantilli';
+    src: url("../../assets/fonts/chantelli_antiqua.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
+    font-family: 'Chantilli', "Times New Roman", serif;
     background-size: cover;
     background: #464646 url("../../images/wallup-53677.jpg") no-repeat fixed center center;
+    color: white;
 }
 
 #container {
     width: auto;
-}
-
-#left {
-    width: 20%;
-    height: 40px;
-    float: left;
-}
-
-#middle {
-    width: 60%;
-    height: 40px;
-    margin-left: 30%;
-}
-
-#middle img {
-    width: 15%;
-}
-
-#right {
-    height: 40px;
-    float: right;
-    margin-top: -40px;
-    margin-right: -14%;
 }
 
 .cf:before, .cf:after {
@@ -45,7 +30,61 @@ img {
     padding-top: 5px;
     padding-left: 5px;
     padding-bottom: 5px;
-    width: 150px;
+    width: 108px;
+}
+
+.hide {
+    display: none;
+}
+
+/*************TITELS*********************/
+
+h1 {
+    color: black;
+    margin-top: 5px;
+    margin-left: 5%;
+    font-weight: 800;
+}
+
+#middle h1{
+    margin-left: 34%;
+}
+
+#right h1 {
+    margin-left: -4%;
+}
+
+
+#handCards h1 {
+    margin-left: 23%;
+}
+
+
+
+/*************** LEFT *******************/
+#left {
+    width: 20%;
+    height: 40px;
+    float: left;
+}
+
+#usernames {
+
+    display: inline-block;
+    position: absolute;
+}
+
+/*************** MIDDLE *******************/
+
+#middle {
+    width: 60%;
+    height: 40px;
+    margin-left: 29%;
+}
+
+
+#middle img {
+    width: 15%;
 }
 
 #deckCards {
@@ -53,15 +92,69 @@ img {
     margin-right: auto;
 }
 
-#handCards, #remainingCards {
+#handCards {
     position: fixed;
     bottom: 0%;
     display: inline-block;
+    width: 75%;
+    margin-left: 2%;
 }
 
-#usernames {
-    display: inline-block;
+#handCards img {
+    width: 10%;
+    padding-left: 1%;
+}
+
+#take {
+    float: right;
+}
+
+#playMoney, #endTurn {
+    font-family: 'Chantilli', "Times New Roman", serif;
+    background-image: url(../media/speelKaartKnop.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 10px;
+    cursor: pointer;
+    height: 80px;
+    width: 75px;
     position: absolute;
+    right: 295px;
+}
+
+#playMoney {
+    bottom: 15px;
+}
+
+#endTurn {
+    bottom: 95px;
+}
+
+
+#playMoney:hover, #endTurn:hover {
+    color: white;
+}
+
+#remainingCards {
+    position: absolute;
+    bottom: 0px;
+    margin-left: 98px;
+    width: 82%;
+}
+
+/*************** RIGHT *******************/
+#right {
+    height: 40px;
+    width: 17%;
+    float: right;
+    margin-top: -40px;
+}
+
+#right img {
+    width: 30%;
+    display: block;
 }
 
 #victoryCards {
@@ -73,16 +166,7 @@ img {
     width: 160%;
 }
 
-#right img {
-    width: 30%;
-    display: block;
-}
 
-#handCards img {
-    width: 10%;
-    padding-left: 1%;
-}
 
-#back {
-    width: 33%;
-}
+
+
