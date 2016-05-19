@@ -99,12 +99,15 @@ var cardsInMiddle = function(e){
 };
 
 var gekozenKaart = function(e) {
-	
-	
-	
 	Kopen(kaart);
 };
 
+var infoSpeler = function (result) {
+	$('#usernames').empty();
+	for (var i = 0; i < 4; i++) {
+		$('#usernames').append(result[i] + "<br />");
+	}
+}
 
 //-------------------AJAX-------------------
 var spelersOpslaan = function(e) {
@@ -151,8 +154,6 @@ var geefKaartenInHand = function(e) {
     }).done(function (response) {
         var result = JSON.parse(response);
         kaartenInHand(result);
-        
-     
     });
 }
 
@@ -168,8 +169,7 @@ var geefHuidigeWaarden = function(e) {
     }).done(function (response) {
         var result = JSON.parse(response);
         console.log(result);
-        
-     
+        infoSpeler(result);
     });
 }
 var actieKaarten = function (e){
