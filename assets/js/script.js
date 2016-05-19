@@ -258,7 +258,7 @@ $(document).ready(function () {
 	$('#endTurn').on("click",stopBeurt)
 	$('#endTurn').on("click",geefKaartenInHand);
 	$('#endTurn').on("click",geefHuidigeWaarden );
-	//$('#').on('click', geefInfoOverKaart); VRAGEN
+	$('#handCards img').on('click', geefInfoOverKaart);
 	$('#handCards img').on('click', cardsInMiddle);
 	$('#deckCards img').on('click', gekozenKaart);
 	
