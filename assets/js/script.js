@@ -102,15 +102,20 @@ var cardsInMiddle = function(e){
 };
 
 var gekozenKaart = function(e) {
-	
-	
-	
-	Kopen(kaart);
+    var currentCardName = this.id;
+    kopen(currentCardName);
 };
 
-//var responseTest = function(String testing[]) {
-//	console.log(testing);
-//};
+var speelGeldkaarten = function(e) {
+    var elkeID = document.querySelectorAll("#handCards div id");
+    
+    for (var i = 0; i < elkeID.length; i++) {
+        elkeID[i].classList.add("anything");
+        if (elkeID[i] == koper || elkeID[i] == koper || elkeID[i] == koper) {
+            // Hier moet nog verder aan gewerkt worden!!!
+        }
+    }
+};
 
 //-------------------AJAX-------------------
 var spelersOpslaan = function(e) {
@@ -177,12 +182,12 @@ var actieKaarten = function (e){
 	    });
 }
 
-var Kopen = function(kaart) {
-	
-	var gekozenKaart = kaart;
-	
+var kopen = function(kaart) {
+    
+    var gekozenKaart = kopen;
+    
     var parameters = {
-    	kaart: gekozenKaart,
+        kaart: gekozenKaart,
         operation: "kaartenKopen"
     };
 
