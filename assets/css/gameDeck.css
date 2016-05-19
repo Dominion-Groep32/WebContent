@@ -105,6 +105,11 @@ h1 {
     padding-left: 1%;
 }
 
+#handCards img:hover {
+	border: 1px solid green;
+}
+
+
 #take {
     float: right;
 }
@@ -142,6 +147,10 @@ h1 {
     bottom: 0px;
     margin-left: 98px;
     width: 82%;
+}
+
+#remainingCards img {
+	width: 10%;
 }
 
 /*************** RIGHT *******************/

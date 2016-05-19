@@ -21,8 +21,6 @@ var dataStorage = function (event) {
 //Hierdoor is gameInterface & play.html op dezelfde pagina gezet
 var pressSubmit = function (event) {
     event.preventDefault();
-    alert("Hallo iedereen");
-
     $("#step1").slideUp();
     $("#step1").addClass("hide");
     $("#step2").removeClass("hide");
@@ -39,7 +37,6 @@ var dynamicInput = function () {
         html += "<div><label>'Player " + (i + 1) + ":</label><input type='text' required placeholder='Firstname Lastname' id='player" + (i + 1) + "' /></div>"
     }
     $("#nameOfPlayers").html(html);
-
     console.log(numberOfPlayers + " spelers");
 };
 
@@ -48,6 +45,7 @@ var generateSrc = function () {
     for (var i = 2; i <= 4; i++) {
         $('#numberOfPlayers').append('<label><input type="radio" required value=' + [i] + ' name="number"/><img src="assets/media/' + [i] + '.png"/></label>');
     }
+ 
 };
 
 //Change language of manual: Nederlands / English
@@ -65,53 +63,35 @@ var changeLanguage = function () {
     });
 };
 
-/**
- * Created by Maxim
- */
-var deckCardsArray = ['adventurer', 'alchemist', 'ambassador', 'bureaucrat', 'cellar', 'chancellor', 'chapel', 'councilroom', 'feast', 'festival', 'gardens', 'library', 'market', 'mine', 'moat', 'moneylender', 'smithy', 'spy', 'thief', 'throneroom', 'village', 'witch', 'woodcutter', 'workshop'];
-var handCardsArray = ['koper', 'koper', 'landgoed', 'koper', 'koper', 'landgoed', 'koper', 'koper', 'landgoed', 'koper'];
 
-var makeDeck = function (e) {
  
-
-    //Generate deckCards
-    for (var i = 0, len = 10; i < len; i++) {
-        var html = '';
-
-        if (i == 5) {
-            html += "<br />";
-        }
-
-      
-        var src = 'images/small/' + deckCardsArray[i] + '.png';
-        html += '<img alt="' + deckCardsArray[i] + '"  title="' + deckCardsArray[i] + '" src="' + src + '" />';
-        $("#deckCards").append(html);
-       
-
-        //console.log(html);
-    }
-
   
-  
-};
+
 
 var kaartenInHand = function(response){
 	console.log("hier kom ik ook in");
+	$("handCards").empty();
 	  for (var i = 0;  i < 5; i++) {
-		 
+		  	
 	        var html = '';
 	        var src = 'images/' + response[i] + '.jpg';
 	        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
 	        $("#handCards").append(html);
+	        
 	    }
 }
 
-var actieKaartenGeneren = function(repsonse){
+var actieKaartenGeneren = function(response){
+	console.log("dit is het object response van actiekaarten"+response);
 	for (var i = 0;  i < 10; i++) {
-        var html = '';
-        var src = 'images/' + response[i].toString() + '.jpg';
-        html += '<img alt="' + response[i].toString() + '"  title="' + response[i].toString() + '" src="' + src + '"  id="' + response[i].toString() + '"/>';
+		
+		var html = '';
+		if (i == 5) {html += "<br />";}
+        var src = 'images/small/' + response[i] + '.png';
+        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
+     
         $("#deckCards").append(html);
+        console.log(html);
     }
 	}
 
@@ -138,10 +118,18 @@ var spelersOpslaan = function(e) {
 	
     var spelerNaam1 = $("input#player1").val();
     var spelerNaam2 = $("input#player2").val();
+    var spelerNaam3 = $("input#player3").val();
+    var spelerNaam4 = $("input#player4").val();
+    var spelerNaam5 = $("input#player5").val();
+    var spelerNaam6 = $("input#player6").val();
     
     var parameters = {
         speler1: spelerNaam1,
         speler2: spelerNaam2,
+        speler3: spelerNaam3,
+        speler4: spelerNaam4,
+        speler5: spelerNaam5,
+        speler6: spelerNaam6,
         operation: "spelerToevoegen"
     };
 
@@ -168,12 +156,29 @@ var huidigeSpeler = function(e) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
-    	
-        var result = JSON.parse(response);	
+       
+        var result = JSON.parse(response);
         kaartenInHand(result);
         
      
     });
+}
+var actieKaarten = function (e){
+	 var parameters = {
+		        operation: "actieKaartenGeneren"
+		    };
+
+		    $.ajax({
+		        url: 'http://localhost:8080/Dominion/DominionServlet',
+		        data: parameters,
+		        type: 'GET'
+		    }).done(function (response) {
+		        var result = JSON.parse(response);
+		        console.log(result);
+		        actieKaartenGeneren(result);
+		        
+		     
+		    });
 }
 
 var Kopen = function(kaart) {
@@ -200,14 +205,13 @@ var Kopen = function(kaart) {
 $(document).ready(function () {
     generateSrc();
     changeLanguage();
-    makeDeck();
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
     $('#handCards img').on('click', cardsInMiddle);
     $('#deckCards img').on('click', gekozenKaart);
     $('#submitPlayers').on('click', spelersOpslaan)
     $('#submitPlayers').on('click', huidigeSpeler);
-   // $('#submitPlayers').on('click', actieKaartenGeneren);
+    $('#submitPlayers').on('click', actieKaarten);
 	$("button").on("click", pressSubmit);
 
 });
