@@ -37,7 +37,7 @@ var dynamicInput = function () {
         html += "<div><label>'Player " + (i + 1) + ":</label><input type='text' required placeholder='Firstname Lastname' id='player" + (i + 1) + "' /></div>"
     }
     $("#nameOfPlayers").html(html);
-    console.log(numberOfPlayers + " spelers");
+    
 };
 
 //Generate the source of the images (shields)
@@ -64,13 +64,8 @@ var changeLanguage = function () {
 };
 
 
- 
-  
-
-
 var kaartenInHand = function(response){
-	console.log("hier kom ik ook in");
-	console.log("dit is de lengte van de kaarten in hand" + response);
+
 	$("#handCards").empty();
 	  for (var i = 0;  i < 5; i++) {
 	        var html = '';
@@ -81,7 +76,7 @@ var kaartenInHand = function(response){
 }
 
 var actieKaartenGeneren = function(response){
-	console.log("dit is het object response van actiekaarten"+response);
+
 	for (var i = 0;  i < 10; i++) {
 		
 		var html = '';
@@ -108,9 +103,6 @@ var gekozenKaart = function(e) {
 	Kopen(kaart);
 };
 
-//var responseTest = function(String testing[]) {
-//	console.log(testing);
-//};
 
 //-------------------AJAX-------------------
 var spelersOpslaan = function(e) {
@@ -180,7 +172,6 @@ var actieKaarten = function (e){
 var Kopen = function(kaart) {
 	
 	var gekozenKaart = kaart;
-	
     var parameters = {
     	kaart: gekozenKaart,
         operation: "kaartenKopen"
