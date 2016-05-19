@@ -202,7 +202,7 @@ var parameters = {
     });
 }
 
-
+//
 //-------------------AJAX-------------------
 
 $(document).ready(function () {
