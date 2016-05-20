@@ -212,7 +212,7 @@ label > input:checked + img {
     padding-top: 80px;
 }
 
-.tab-content h1 {
+.tab-content h2 {
     font-weight: 700;
     margin-bottom: 10px;
 }
