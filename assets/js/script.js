@@ -310,7 +310,7 @@ $(document).ready(function () {
     $('#submitPlayers').on('click', spelersOpslaan);
     $('#submitPlayers').on('click', quickTutorial);
    
-	$("button").on("click", pressSubmit);
+	$("#submitPlayers").on("click", pressSubmit);
 	$('#endTurn').on("click",stopBeurt);
 	$('#endTurn').on("click",geefKaartenInHand);
 	$('#endTurn').on("click",geefHuidigeWaarden );
