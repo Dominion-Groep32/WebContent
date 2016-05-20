@@ -18,6 +18,51 @@ var dataStorage = function (event) {
     }
 };
 
+//Ask if user is sure to close window
+var showAlert = function() {
+    return window.confirm("Are you sure?");
+}
+var testAlert = function(){
+	alert(this.id);
+}
+
+//Quicktutorial op scherm laten verschijnen
+var quickTutorial = function () {
+
+    var id = '#dialog';
+
+    //Get the screen height and width
+    var popupHeight = $(document).height();
+    var popupWidth = $(window).width();
+
+    //Set height and width to popup to fill up the whole screen
+    $('#popup').css({'width': popupWidth, 'height': popupHeight});
+
+    //transition effect
+    $('#popup').fadeIn(1000);
+    $('#popup').fadeTo("slow", 0.8);
+
+    //Get the window height and width
+    var winH = $(window).height();
+    var winW = $(window).width();
+
+    //Set the popup window to center
+    $(id).css('top', winH / 2 - $(id).height() / 2);
+    $(id).css('left', winW / 2 - $(id).width() / 2);
+
+    //transition effect
+    $(id).fadeIn(2000);
+    $(".wrap").addClass('blur');
+
+    //if popup is clicked
+    $('.window').click(function () {
+        $(this).hide();
+        $('.window').hide();
+        $(".wrap").removeClass('blur');
+    });
+
+};
+
 //Hierdoor is gameInterface & play.html op dezelfde pagina gezet
 var pressSubmit = function (event) {
     event.preventDefault();
@@ -69,23 +114,26 @@ var changeLanguage = function () {
 var kaartenInHand = function(response){
 
 	$("#handCards").empty();
-	  for (var i = 0;  i < 5; i++) {
-	        var html = '';
-	        var src = 'images/' + response[i] + '.jpg';
-	        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
-	        $("#handCards").append(html);  
-	    }
+ 	var cardIdx;
+ 	for(cardIdx in response){
+        var html = '';
+        var src = 'images/' + response[cardIdx] + '.jpg';
+        html += '<img alt="' + response[cardIdx] + '"  title="' + response[cardIdx] + '" src="' + src + '"  id="' + response[cardIdx] + '"/>';
+        $("#handCards").append(html);  
+	}
 	 
 }
 
 var actieKaartenGeneren = function(response){
+	var cardIdx;
+	for(cardIdx in response){
 
-	for (var i = 0;  i < 10; i++) {
+	
 		
 		var html = '';
-		if (i == 5) {html += "<br />";}
-        var src = 'images/small/' + response[i] + '.png';
-        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
+		if (cardIdx == 5) {html += "<br />";}
+        var src = 'images/small/' + response[cardIdx] + '.png';
+        html += '<img alt="' + response[cardIdx] + '"  title="' + response[cardIdx] + '" src="' + src + '"  id="' + response[cardIdx] + '"/>';
      
         $("#deckCards").append(html);
         
@@ -93,26 +141,20 @@ var actieKaartenGeneren = function(response){
 	}
 var toonHuidigSpeelVeld = function(response){
 		
-	console.log(response);
+	console.log("dit is de response van toonhuidig speelveled"+response);
 	//1 voor te testen
 	$("#playedCards").empty();
+	
 	var cardIdx;
-	for(cardIdx in response)
-	{
-		console.log(cardIdx);
-		console.log(response[cardIdx]);
-	}
-	for (var i = 0;  i < 1; i++) {
-		
+	for(cardIdx in response){
 		var html = '';
-		if (i == 5) {html += "<br />";}
-        var src = 'images/small/' + response[i] + '.png';
-        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
+        var src = 'images/small/' + response[cardIdx] + '.png';
+        html += '<img alt="' +  response[cardIdx] + '"  title="' +  response[cardIdx] + '" src="' + src + '"  id="' +  response[cardIdx] + '"/>';
      
         $("#playedCards").append(html);
-        
-    }
-	}
+	}}
+	
+	
 
 var cardsInMiddle = function(e){
     var currentCardName = this.id;  
@@ -158,6 +200,7 @@ var spelersOpslaan = function(e) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
+    	trekKaartInHand();
     	geefKaartenInHand();
     	actieKaarten();
     	geefHuidigeWaarden();
@@ -217,29 +260,28 @@ var actieKaarten = function (e){
 
 var huidigSpeelVeld = function (){
 	console.log("hier ben ik hue ");
-	 var parameters = { 
-			 operation: "toonSpeelVeld" 
-				 };
-	 console.log(parameters);
+	 var parameters = { operation: "toonSpeelVeld" };
+	
 
 	 $.ajax({
 		 	url: 'http://localhost:8080/Dominion/DominionServlet',
 	        data: parameters,
 	        type: 'GET'
 	    }).done(function (response) {
-	    	console.log("en hier kom iik niet in");
 	    	console.log(response);
 	        var result = JSON.parse(response);
-	        console.log(result);
+	        toonHuidigSpeelVeld(result);
 	        
-	       toonHuidigSpeelVeld(result);
+	        
 		       
 	    });
 }
 
-var Kopen = function(kaart) {
+
+var Kopen = function() {
+	console.log("ik kom hier in ");
+	var gekozenKaart = this.id;
 	
-	var gekozenKaart = kaart;
     var parameters = {
     	kaart: gekozenKaart,
         operation: "kaartenKopen"
@@ -250,16 +292,28 @@ var Kopen = function(kaart) {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
-        var result = JSON.parse(response);
+        //var result = JSON.parse(response);
+        //console.log(result);
         
-      //waar
+     
+    });
+}
+
+var trekKaartInHand = function() {
+    var parameters = {
+        operation: "trekKaartInHand"
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/Dominion/DominionServlet',
+        data: parameters,
+        type: 'GET'
+    }).done(function (response) {
     });
 }
 
 var geefInfoOverKaart = function(response) {
-	console.log("test");
-	/*
-	console.log("hier komt hij in "+response);
+	
 	 var gekozenKaart = this.id; 
 	 console.log(gekozenKaart);
 	
@@ -274,12 +328,10 @@ var geefInfoOverKaart = function(response) {
         type: 'GET'
     }).done(function (response) {
         var result = JSON.parse(response);
-        console.log("dit is een test als je hierin komt noob");
-        console.log(result);
+        console.log( result);
       
     });
-    */
-	//Test
+   
 
 }
 
@@ -293,6 +345,7 @@ var parameters = {
         data: parameters,
         type: 'GET'
     }).done(function (response) {
+    	$("#playedCards").empty();	
     });
 }
 
@@ -311,19 +364,25 @@ $(document).ready(function () {
   
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
-    $('#submitPlayers').on('click', spelersOpslaan)
-	$("button").on("click", pressSubmit);
-	$('#endTurn').on("click",stopBeurt)
+    $('#submitPlayers').on('click', spelersOpslaan);
+    //$('#submitPlayers').on('click', quickTutorial);
+    
+	$("#submitPlayers").on("click", pressSubmit);
+	$('#endTurn').on("click",stopBeurt);
+	$('#endTurn').on("click",trekKaartInHand);
 	$('#endTurn').on("click",geefKaartenInHand);
 	$('#endTurn').on("click",geefHuidigeWaarden );
-	$('#playMoney').on("click",huidigSpeelVeld);
 	
-	$('#handCards img').on("click",cardsInMiddle );
-	$('#handCards img').on("click",cardsInMiddle );
-	$('#handCards img').on('click',geefInfoOverKaart);
-	$('body').on('click','handCards img', geefInfoOverKaart);
-	$('body').on('click','handCards img', cardsInMiddle);
-	$('body').on('click','deckCards img', gekozenKaart);
+	
+	
+	$('#playMoney').on("click",huidigSpeelVeld);
+	$('#playMoney').on("click",geefKaartenInHand);
+	$('#playMoney').on("click",geefHuidigeWaarden);
+	
+	//$('body').on('mouseover','#deckCards img', geefInfoOverKaart);
+	//$('body').on('mouseover','#handCards img ', geefInfoOverKaart);
+	$('body').on('click','#deckCards img', Kopen);
+	$('body').on('click','#handCards img ', Kopen);
 	
 	
 
