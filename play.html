@@ -14,11 +14,18 @@
 </head>
 <body>
 
-<a href="index.html">
+<a href="index.html" id="confirm">
     <img src="assets/media/building-3.png" id="home" alt="home">
 </a>
 
-<section id="step1">
+<div id="boxes">
+    <div style="top: 199.5px; right: 551.5px; display: none;" id="dialog" class="window">
+        <a href="#" class="close">Close it</a>
+    </div>
+</div>
+
+<div class="wrap">
+    <section id="step1">
     <form action="#" method="post">
 
         <fieldset>
@@ -62,7 +69,7 @@
         </div>
 
         <div id="remainingCards">
-            <h1>RRemaining cards</h1>
+            <h1>Remaining cards</h1>
             <img src="images/back.jpg" id="back">
             <img src="images/take.jpg" id="take">
             <img src="images/trash.jpg" id="trash">
@@ -90,7 +97,7 @@
     </div>
 
 </section>
-
+</div>
 
 </body>
 </html>
