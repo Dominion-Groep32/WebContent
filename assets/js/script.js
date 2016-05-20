@@ -91,6 +91,28 @@ var actieKaartenGeneren = function(response){
         
     }
 	}
+var toonHuidigSpeelVeld = function(response){
+		
+	console.log(response);
+	//1 voor te testen
+	$("#playedCards").empty();
+	var cardIdx;
+	for(cardIdx in response)
+	{
+		console.log(cardIdx);
+		console.log(response[cardIdx]);
+	}
+	for (var i = 0;  i < 1; i++) {
+		
+		var html = '';
+		if (i == 5) {html += "<br />";}
+        var src = 'images/small/' + response[i] + '.png';
+        html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
+     
+        $("#playedCards").append(html);
+        
+    }
+	}
 
 var cardsInMiddle = function(e){
     var currentCardName = this.id;  
@@ -193,6 +215,28 @@ var actieKaarten = function (e){
 	    });
 }
 
+var huidigSpeelVeld = function (){
+	console.log("hier ben ik hue ");
+	 var parameters = { 
+			 operation: "toonSpeelVeld" 
+				 };
+	 console.log(parameters);
+
+	 $.ajax({
+		 	url: 'http://localhost:8080/Dominion/DominionServlet',
+	        data: parameters,
+	        type: 'GET'
+	    }).done(function (response) {
+	    	console.log("en hier kom iik niet in");
+	    	console.log(response);
+	        var result = JSON.parse(response);
+	        console.log(result);
+	        
+	       toonHuidigSpeelVeld(result);
+		       
+	    });
+}
+
 var Kopen = function(kaart) {
 	
 	var gekozenKaart = kaart;
@@ -207,12 +251,13 @@ var Kopen = function(kaart) {
         type: 'GET'
     }).done(function (response) {
         var result = JSON.parse(response);
-      
+        
+      //waar
     });
 }
 
 var geefInfoOverKaart = function(response) {
-	alert("test");
+	console.log("test");
 	/*
 	console.log("hier komt hij in "+response);
 	 var gekozenKaart = this.id; 
@@ -234,6 +279,8 @@ var geefInfoOverKaart = function(response) {
       
     });
     */
+	//Test
+
 }
 
 var stopBeurt = function(e){
@@ -265,17 +312,18 @@ $(document).ready(function () {
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
     $('#submitPlayers').on('click', spelersOpslaan)
-   
 	$("button").on("click", pressSubmit);
 	$('#endTurn').on("click",stopBeurt)
 	$('#endTurn').on("click",geefKaartenInHand);
 	$('#endTurn').on("click",geefHuidigeWaarden );
+	$('#playMoney').on("click",huidigSpeelVeld);
+	
 	$('#handCards img').on("click",cardsInMiddle );
 	$('#handCards img').on("click",cardsInMiddle );
 	$('#handCards img').on('click',geefInfoOverKaart);
-	$('body').on('click','handCards a img', geefInfoOverKaart);
-	$('body').on('click','handCards a img', cardsInMiddle);
-	$('body').on('click','deckCards a img', gekozenKaart);
+	$('body').on('click','handCards img', geefInfoOverKaart);
+	$('body').on('click','handCards img', cardsInMiddle);
+	$('body').on('click','deckCards img', gekozenKaart);
 	
 	
 
