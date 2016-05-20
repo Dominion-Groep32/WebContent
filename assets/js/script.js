@@ -301,10 +301,7 @@ var parameters = {
 $(document).ready(function () {
     generateSrc();
     changeLanguage();
-   
-    
-    
-  
+
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
     $('#submitPlayers').on('click', spelersOpslaan);
