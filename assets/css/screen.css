@@ -158,14 +158,14 @@ label > input:checked + img {
 }
 
 /* Name of players */
-#nameOfPlayers label {
-    margin-right: 10px;
-}
-
 #nameOfPlayers {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+#nameOfPlayers label {
+     margin-right: 10px;
 }
 
 #nameOfPlayers > div {
@@ -223,7 +223,7 @@ label > input:checked + img {
 }
 
 /* Clearfix */
-.tab-links:after {
+.tab-links:after {              /*TODO: maak hier een cf van */
     display:block;
     clear:both;
     content:'';
