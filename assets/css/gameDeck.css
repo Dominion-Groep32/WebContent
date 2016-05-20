@@ -15,6 +15,7 @@ body {
 
 #container {
     width: auto;
+    height: auto;
 }
 
 .cf:before, .cf:after {
@@ -156,27 +157,77 @@ h1 {
 
 /*************** RIGHT *******************/
 #right {
-    height: 40px;
+    height: 100%;
     width: 17%;
     float: right;
-    margin-top: -40px;
+    margin-top: -45px;
 }
 
 #right img {
-    width: 30%;
+    width: 35%;
     display: block;
+    height: 100%;
+    margin-top: -11%;
 }
 
 #victoryCards {
     margin-left: 80%;
-
 }
 
 #victoryCards img {
-    width: 160%;
+    width: 169%;
+    display: block;
+    height: 100%;
+    margin-top: -40%;
 }
 
+.geldKaart1, .geldKaart2, .geldKaart3, .vloekKaart {
+	position: relative;
+	height: 100%;
+}
 
+#left em, #deckCards em, #right em {
+    background: no-repeat center/80% url("../media/dot.png");
+    position: relative;
+    bottom: 175%;
+    display: inline-block;
+}
 
+#right em {
+	right: 1%;
+	padding: 4%;
+}
 
+#deckCards img {
+	margin-left: -4%;
+	padding-right: 1.5%;
+}
 
+#deckCards em {
+    right: -3%;
+    padding: 1.3%;
+   	bottom: 150px;
+}
+
+.overwinning1 em, .overwinning2 em, .overwinning3 em {
+    padding: 15%;
+    margin-left: -15%;
+}
+
+/*
+.geldkaart1 span{
+    position: relative;
+   	color: #ffa31a;
+	font-size:10em;
+	right: 10%;
+    bottom: 150%;
+    display: block;
+    
+    height: 400px;
+    width: 400px;
+    position: relative;
+    bottom: 50%;
+    left: 35%;
+    color: black;
+}
+*/

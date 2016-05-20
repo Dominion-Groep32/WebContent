@@ -76,25 +76,24 @@ var kaartenInHand = function(response){
 	        $("#handCards").append(html);  
 	    }
 	 
-}
+};
 
 var actieKaartenGeneren = function(response){
 
-	for (var i = 0;  i < 10; i++) {
-		
+	for (var i = 0;  i < 10; i++) {	
 		var html = '';
 		if (i == 5) {html += "<br />";}
         var src = 'images/small/' + response[i] + '.png';
+        html += '<em id="' + response[i] + 'counter">10</em>';
         html += '<img alt="' + response[i] + '"  title="' + response[i] + '" src="' + src + '"  id="' + response[i] + '"/>';
-     
+        console.log(html);
         $("#deckCards").append(html);
-        
     }
-	}
+};
 
 var cardsInMiddle = function(e){
-    var currentCardName = this.id;  
-    console.log(currentCardName);	
+    var currentCardName = this.id;
+    console.log(currentCardName);
     $('#playedCards').append(this);
     $('#message').empty();
     $('#message').append('Player 1 heeft een ' + currentCardName + ' kaart gespeeld.');
