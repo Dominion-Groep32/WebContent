@@ -18,7 +18,50 @@ var dataStorage = function (event) {
     }
 };
 
-//Hierdoor is gameInterface & play.html op dezelfde pagina gezet
+
+//Ask if user is sure to close window
+var showAlert = function() {
+    return window.confirm("Are you sure?");
+}
+
+//Quicktutorial op scherm laten verschijnen
+var quickTutorial = function () {
+
+    var id = '#dialog';
+
+    //Get the screen height and width
+    var popupHeight = $(document).height();
+    var popupWidth = $(window).width();
+
+    //Set height and width to popup to fill up the whole screen
+    $('#popup').css({'width': popupWidth, 'height': popupHeight});
+
+    //transition effect
+    $('#popup').fadeIn(1000);
+    $('#popup').fadeTo("slow", 0.8);
+
+    //Get the window height and width
+    var winH = $(window).height();
+    var winW = $(window).width();
+
+    //Set the popup window to center
+    $(id).css('top', winH / 2 - $(id).height() / 2);
+    $(id).css('left', winW / 2 - $(id).width() / 2);
+
+    //transition effect
+    $(id).fadeIn(2000);
+    $(".wrap").addClass('blur');
+
+    //if popup is clicked
+    $('.window').click(function () {
+        $(this).hide();
+        $('.window').hide();
+        $(".wrap").removeClass('blur');
+    });
+
+};
+
+//gameInterface & play.html on the same page
 var pressSubmit = function (event) {
     event.preventDefault();
     $("#step1").slideUp();
@@ -264,10 +307,11 @@ $(document).ready(function () {
   
     $('#submit').on('click', dataStorage);
     $('#numberOfPlayers').on('change', dynamicInput);
-    $('#submitPlayers').on('click', spelersOpslaan)
+    $('#submitPlayers').on('click', spelersOpslaan);
+    $('#submitPlayers').on('click', quickTutorial);
    
 	$("button").on("click", pressSubmit);
-	$('#endTurn').on("click",stopBeurt)
+	$('#endTurn').on("click",stopBeurt);
 	$('#endTurn').on("click",geefKaartenInHand);
 	$('#endTurn').on("click",geefHuidigeWaarden );
 	$('#handCards img').on("click",cardsInMiddle );
@@ -276,7 +320,6 @@ $(document).ready(function () {
 	$('body').on('click','handCards a img', geefInfoOverKaart);
 	$('body').on('click','handCards a img', cardsInMiddle);
 	$('body').on('click','deckCards a img', gekozenKaart);
-	
-	
+    $("#confirm").on("click", showAlert);
 
 });
