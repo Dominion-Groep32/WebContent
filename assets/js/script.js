@@ -429,6 +429,6 @@ $(document).ready(function () {
 	$('body').on('click','#deckCards img', kaartGlow);
 	$('body').on('click','#handCards img ', actieUitvoeren);
 	
-	
+	//test
 
 });
