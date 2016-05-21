@@ -276,6 +276,6 @@ $(document).ready(function () {
 	$('body').on('click','handCards a img', cardsInMiddle);
 	$('body').on('click','deckCards a img', gekozenKaart);
 	
-	
+	//test
 
 });
