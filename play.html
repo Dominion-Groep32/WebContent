@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,113 +6,123 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <link rel="stylesheet" href="assets/css/screen.css" type="text/css"/>
     <link rel="stylesheet" href="assets/css/gameDeck.css" type="text/css"/>
-    <script src="assets/js/jquery-2.1.4.min.js"></script>
-    <script src="assets/js/file.js"></script>
-    <script src="assets/js/script.js"></script>
+
 </head>
 <body>
 
-<a href="index.html">
+
+<!-- TODO: aside van maken -->
+<a href="index.html" id="confirm">
     <img src="assets/media/building-3.png" id="home" alt="home">
 </a>
 
-<section id="step1">
-    <form action="#" method="post">
+<div id="boxes">
+    <div id="dialog" class="window">
 
-        <fieldset>
-            <h1>Select your type of game</h1>
-
-            <div class="wrapper">
-                <input type="radio" id="classic" value="classic" name="gameType" checked="checked" required/>
-                <label for="classic">Classic</label>
-
-                <input type="radio" id="expansion" value="expansion" name="gameType" required/>
-                <label for="expansion">Expansion</label>
-            </div>
-
-            <h1>Select your number of players</h1>
-
-            <div id="numberOfPlayers">
-            </div>
-
-            <h1>Give your players a name</h1>
-
-            <div id="nameOfPlayers">
-            </div>
-
-            <button type="submit" id="submitPlayers">Let's play!</button>
-        </fieldset>
-    </form>
-</section>
-<section id="step2" class="hide">
-    <div id="container">
-        <div id="left">
-            <div id="usernames">
-            </div>
-
-            <div id="victoryCards">
-                <h1>Victorycards</h1>
-                <div class="overwinning1">
-                	<em>20</em>
-                	<a href="#" id="provincie"><img src="images/small/provincie.png"></a>
-                </div><br>
-                 
-               	<div class="overwinning2">
-                	<em>40</em>
-                	<a href="#" id="hertogdom"><img src="images/small/hertogdom.png"></a>
-                </div><br>
-                
-                <div class="overwinning2">
-                	<em>60</em>
-                	<a href="#" id="landgoed"><img src="images/small/landgoed.png"></a>
-                </div><br>
-                 
-            </div>
-        </div>
-
-        <div id="remainingCards">
-            <h1>Remaining cards</h1>
-            <img src="images/back.jpg" id="back">
-            <img src="images/take.jpg" id="take">
-            <img src="images/trash.jpg" id="trash">
-        </div>
-
-        <div id="middle">
-            <h1>Actioncards</h1>
-            <div id="deckCards"></div>
-            <div id="message"></div>
-            <div id="playedCards"></div>
-            <div id="handCards"><h1>Cards in hands</h1></div>
-            <button id="playMoney">Play treasures</button>
-            <button id="endTurn">End turn</button>
-        </div>
-
-        <div id="right">
-            <h1>Treasurecards</h1>
-            <div class="geldKaart1">
-				<em>20</em>
-            	<a href="#" id="goudKaart"><img src="images/small/goud.png"></a>
-            </div>
-            
-            <div class="geldKaart2">
-                <em>40</em>
-            	<a href="#" id="zilverKaart"><img src="images/small/zilver.png"></a>
-            </div>
-            
-            <div class="geldKaart3">
-                <em>60</em>
-            	<a href="#" id="vloekKaart"><img src="images/small/koper.png"></a>
-            </div>
-            
-            <div class="vloekKaart">
-              	<em>10</em>
-            	<a href="#" id="vloekKaart"><img src="images/small/vloek.png"></a>
-            <div id="options"></div>
-        </div>
     </div>
 </div>
-</section>
 
+<div class="wrap">
+    <section id="step1"> <!--TODO: geef deze sectie wel een titel en verander-->
+        <form action="#" method="post">
 
+            <fieldset>
+                <h1>Select your type of game</h1>
+
+                <div class="wrapper">
+                    <input type="radio" id="classic" value="classic" name="gameType" checked="checked" required/>
+                    <label for="classic">Classic</label>
+
+                    <input type="radio" id="expansion" value="expansion" name="gameType" required/>
+                    <label for="expansion">Expansion</label>
+                </div>
+
+                <h1>Select your number of players</h1>
+
+                <div id="numberOfPlayers">
+                </div>
+
+                <h1>Give your players a name</h1>
+
+                <div id="nameOfPlayers">
+                </div>
+
+                <button type="submit" id="submitPlayers">Let's play!</button>
+            </fieldset>
+        </form>
+    </section>
+    <section id="step2" class="hide">
+
+        <!--TODO:zet hier een H1 maar hide hem: screenreaders -->
+
+        <div id="container">
+            <div id="left">
+            	<div id="spelerInfo">
+            		<div id="usernames"></div>
+            		<div id="infoKaart"></div>
+            	</div>
+                
+	            <div id="victoryCards">
+	                <h1>Victorycards</h1>
+	                <div class="overwinning1">
+	                    <em>20</em>
+	                    <a href="#" id="provincie"><img src="images/small/provincie.png"></a>
+	                </div><br>   
+	                <div class="overwinning2">
+	                    <em>40</em>
+	                    <a href="#" id="hertogdom"><img src="images/small/hertogdom.png"></a>
+	                </div><br>
+	                <div class="overwinning2">
+	                    <em>60</em>
+	                    <a href="#" id="landgoed"><img src="images/small/landgoed.png"></a>
+	                </div><br>
+	            </div>
+
+            </div>
+
+            <div id="remainingCards">
+                <h1>Remaining cards</h1>
+                <img src="images/back.jpg" id="back">
+                <img src="images/take.jpg" id="take">
+                <img src="images/trash.jpg" id="trash">
+            </div>
+
+            <div id="middle">
+                <h1>Actioncards</h1>
+
+                <div id="deckCards"></div>
+                <div id="message"></div>
+                <div id="playedCards"></div>
+                <div id="handCards"><h1>Cards in hands</h1></div>
+                <button id="playMoney">Play treasures</button>
+                <button id="endTurn">End turn</button>
+            </div>
+
+            <div id="right">
+                <h1>Treasurecards</h1>
+                <div class="geldKaart1">
+                    <em>20</em>
+                    <a href="#" id="goudKaart"><img src="images/small/goud.png"></a>
+                </div>          
+                <div class="geldKaart2">
+                    <em>40</em>
+                    <a href="#" id="zilverKaart"><img src="images/small/zilver.png"></a>
+                </div>
+                <div class="geldKaart3">
+                    <em>60</em>
+                    <a href="#" id="vloekKaart"><img src="images/small/koper.png"></a>
+                </div>
+                <div class="vloekKaart">
+                    <em>10</em>
+                    <a href="#" id="vloekKaart"><img src="images/small/vloek.png"></a>
+                	<div id="options"></div>
+           		</div>
+        	</div>
+        </div>
+    </section>
+</div>
+
+<script src="assets/js/jquery-2.1.4.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
