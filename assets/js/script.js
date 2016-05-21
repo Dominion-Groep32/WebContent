@@ -411,7 +411,7 @@ $(document).ready(function () {
     $('#submitPlayers').on('click', spelersOpslaan);
    
 	$("#submitPlayers").on("click", pressSubmit);
-	 //$('#submitPlayers').on('click', quickTutorial);
+	$('#submitPlayers').on('click', quickTutorial);
 	$('#endTurn').on("click",stopBeurt);
 	$('#endTurn').on("click",trekKaartInHand);
 	$('#endTurn').on("click",geefKaartenInHand);
@@ -423,10 +423,10 @@ $(document).ready(function () {
 	$('#playMoney').on("click",geefHuidigeWaarden);
 	
 	$('body').on('mouseover',stopInfo)
-	//$('body').on('click','#deckCards img', geefInfoOverKaart);
-	//$('body').on('click','#handCards img ', geefInfoOverKaart);
+	$('body').on('click','#deckCards img', geefInfoOverKaart);
+	$('body').on('click','#handCards img ', geefInfoOverKaart);
 	$('body').on('click','#deckCards img',kaartKopen);
-	//$('body').on('click','#deckCards img', kaartGlow);
+	$('body').on('click','#deckCards img', kaartGlow);
 	$('body').on('click','#handCards img ', actieUitvoeren);
 	
 	
