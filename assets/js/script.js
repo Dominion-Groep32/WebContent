@@ -25,7 +25,7 @@ var showAlert = function() {
 }
 
 //Quicktutorial op scherm laten verschijnen
-var quickTutorial = function () {
+var quickTutorial = function() {
 
     var id = '#dialog';
 
@@ -50,13 +50,13 @@ var quickTutorial = function () {
 
     //transition effect
     $(id).fadeIn(2000);
-    $(".wrap").addClass('blur');
+    $(".wrapper").addClass('blur');
 
     //if popup is clicked
     $('.window').click(function () {
         $(this).hide();
         $('.window').hide();
-        $(".wrap").removeClass('blur');
+        $(".wrapper").removeClass('blur');
     });
 
 };
@@ -95,16 +95,16 @@ var generateSrc = function () {
 
 //Change language of manual: Nederlands / English
 var changeLanguage = function () {
-    $('.tabs .tab-links a').on('click', function (e) {
-        var currentAttrValue = $(this).attr('href');
-
-        // Show/Hide Tabs
-        $('.tabs ' + currentAttrValue).show().siblings().hide();
-
-        // Change/remove current tab to active
-        $(this).parent('li').addClass('active').siblings().removeClass('active');
-
+    $('.tab-links a').on('click', function (e) {
         e.preventDefault();
+
+        var currentLanguage = $(this).attr('href');
+
+        // Show/Hide text in certain language
+        $('.tabs ' + currentLanguage).show().siblings().hide();
+
+        // Change current tab to active
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
     });
 };
 

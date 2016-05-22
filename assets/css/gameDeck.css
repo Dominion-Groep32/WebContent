@@ -7,6 +7,7 @@
 }
 
 body {
+    color: #000000;
     font-family: 'Chantilli', "Times New Roman", serif;
     background-size: cover;
     background: #464646 url("../../images/wallup-53677.jpg") no-repeat fixed center center;
@@ -47,23 +48,23 @@ img {
 
 /*************TITELS*********************/
 
-h1 #step2 {
+span {
     color: black;
     margin-top: 5px;
     margin-left: 5%;
     font-weight: 800;
 }
 
-#middle h1{
+#middle .title {
     margin-left: 34%;
 }
 
-#right h1 {
+#right .title {
     margin-left: -4%;
 }
 
 
-#handCards h1 {
+#handCards .title {
     margin-left: 23%;
 }
 
@@ -79,7 +80,11 @@ h1 #step2 {
 #usernames {
     display: inline-block;
     position: absolute;
-    background-color: #000000;
+    background-image: url("../media/infoKaartPerkament.png");
+    background-repeat: no-repeat;
+    height: 323px;
+    width: 220px;
+
 }
 
 /*************** MIDDLE *******************/
@@ -189,7 +194,7 @@ h1 #step2 {
 }
 
 /*************** QUICK TUTORIAL *******************/
-#boxes .window {
+#popupbox .window {
     position:absolute;
     left:0;
     top:0;
@@ -199,7 +204,7 @@ h1 #step2 {
     z-index:9999;
     padding:20px;
 }
-#boxes #dialog {
+#popupbox #dialog {
     width: 900px;
     height: 810px;
     padding: 0px 10px 10px 440px;

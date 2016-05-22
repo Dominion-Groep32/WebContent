@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/screen.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
     <title>Dominion: home</title>
 </head>
 
 <body>
 
-<figure>
-    <img src="images/Dominionlogo.gif" alt="dominionlogo" title="dominionlogo" />
+<figure class="textcenter">
+    <img src="images/Dominionlogo.gif" alt="dominionlogo" title="dominionlogo"/>
 </figure>
 
-<div class="wrapper">  <!--TODO:nav-->
-    <a href="play.html"><button class="buttonindex">Start</button></a>
-    <a href="leaderboard.html"><button class="buttonindex">Leaderboard</button></a>
-    <a href="gamerules.html"><button class="buttonindex">How to play</button></a>
-</div>
-
-
-//<!--TODO:Waarom worden hier buttons gebruikt? --> deze hebben voordelen tov a hrefs, en met een klasse omdat enkel deze button op die manier gestijld mogen worden-->
+<header>
+    <nav id="navIndex" class="textcenter">
+        <ul>
+            <li><a href="play.html">Start</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="gamerules.html">How to play</a></li>
+        </ul>
+    </nav>
+</header>
 
 <script src="assets/js/jquery-2.1.4.min.js"></script>
 <script src="assets/js/script.js"></script>

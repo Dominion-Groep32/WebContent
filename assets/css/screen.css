@@ -1,6 +1,6 @@
-/*---------------------*/
-/*    Algemene HTML elementen van toepassing op de hele site
-/*---------------------*/
+/*--------------------------------------------------------------*/
+/*    General HTML for the entire website
+/*--------------------------------------------------------------*/
 
 @font-face {
     font-family: 'Chantilli';
@@ -12,7 +12,7 @@
 body {
     font-family: 'Chantilli', "Times New Roman", serif;
     background-color: #ffffff;
-    color: #000000;
+    color: #4c4c4c;
     font-size: 1.0rem;
     background: url("../../images/castle-background2.jpg") no-repeat center center fixed;
     -webkit-background-size: cover; /* achtergrond sizet mee */
@@ -24,12 +24,12 @@ body {
     height: 100%;
 }
 
+
 /*Home button (castle)*/
-#home {
+aside img {
     background: url("../media/button.png") no-repeat;
     background-size: 70px 50px;
-    background-color: transparent;
-    padding: 5px 15px 5px 15px ;
+    padding: 5px 15px;
     width: 40px;
     height: 40px;
     position: absolute;
@@ -41,19 +41,8 @@ body {
     display: none;
 }
 
-
-/*---------------------*/
-/*    index.HTML
-/*---------------------*/
-
-figure {
+.textcenter {
     text-align: center;
-    margin-top: 15px;
-}
-
-a {
-    color: #000000;
-    text-decoration: none;
 }
 
 button {
@@ -65,26 +54,33 @@ button {
     text-decoration: none;
 }
 
-.buttonindex {
-    background-image: url(../media/button.png);
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: auto;
-    border: none;
-    color: #000000;
-    padding: 15px 32px 30px 32px;
-    margin-top: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    cursor: pointer;
-    right: 270px;
-    bottom: 270px;
-
+/*---------------------*/
+/*    index.HTML
+/*---------------------*/
+figure {                            /*Dominion logo*/
+    margin-top: 15px;
 }
 
-.buttonindex:hover {
+a {
+    color: #4c4c4c;
+    text-decoration: none;
+}
+
+#navIndex {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navIndex a {
+    background-image: url(../media/button.png);
+    background-repeat: no-repeat;
+    padding: 15px;
+    margin-top: 5px;
+    display: block;
+}
+
+#navIndex a:hover {
     color:rgba(182, 181, 153, 2);
 }
 
@@ -92,12 +88,8 @@ button {
 /*---------------------*/
 /* PLAY.HTML
 /*---------------------*/
-.hide {
-    display: none;
-}
 
-
-fieldset h1, #wrap h1 {
+fieldset h1, #wrapper h1 {
     margin-top: 30px;
     margin-bottom: 20px;
     text-align: center;
@@ -108,7 +100,7 @@ fieldset h1:first-of-type {
     margin-top: 90px;
 }
 
-fieldset, .tab-content, #wrap {
+fieldset, .tab-content, #wrapper {
      background-image: url(../media/perkament_6horizontaal.png);
      background-repeat:no-repeat;
      margin: auto;
@@ -116,7 +108,7 @@ fieldset, .tab-content, #wrap {
      height: 800px;
  }
 
-/* Font aanpassen van placeholder*/
+/* Adjust font placeholder*/
 ::-webkit-input-placeholder {font-family: 'Chantilli', "Times New Roman", serif}
 ::-moz-placeholder          {font-family: 'Chantilli', "Times New Roman", serif} /* Firefox 19+ */
 :-moz-placeholder           {font-family: 'Chantilli', "Times New Roman", serif} /* Firefox 18- */
@@ -124,6 +116,8 @@ fieldset, .tab-content, #wrap {
 
 
 /*Number of players*/
+
+
 #numberOfPlayers {
     text-align: center;
 }
@@ -181,12 +175,60 @@ label > input:checked + img {
 /*  GAMERULES.HTML
 /*---------------------*/
 
+.tabs {
+    width:100%;
+    color: #000000;
+}
+
+.tabs h1 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.tab-links li {
+    margin: 10px 1px 1px 10px;
+    float:left;                     /*Nederlands and English float next to each other, otherwise English underneath*/
+}
+
+.tab-links a {
+    background-image: url(../media/button.png);
+    background-repeat: no-repeat;
+    background-size: 150px;
+    padding: 15px 32px;
+    text-align: center;
+    width: 80px;
+    display:inline-block;
+    font-weight:600;
+}
+
+.tab-links a:hover, li.active a, li.active a:hover {
+    color:rgba(182, 181, 153, 2);
+    text-decoration:none;
+}
+
 #engels, #nederlands {
     width: 500px;
     height: 530px;
-    overflow: auto;
+    overflow: auto;                 /*scrollbar*/
     margin-left: auto;
     margin-right: auto;
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}
+
+.tab-content {
+    padding-top: 80px;
+}
+
+.tab-content h2 {
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .tab-content p, .tab-content li {
@@ -202,74 +244,6 @@ label > input:checked + img {
 
 .tab-content ul > ul > li {
     padding-left: 75px;
-}
-
-.wrapper {
-    text-align: center;
-}
-
-.tab-content {
-    padding-top: 80px;
-}
-
-.tab-content h2 {
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.tabs {
-    width:100%;
-    display:inline-block;
-}
-
-/* Clearfix */
-.tab-links:after {              /*TODO: maak hier een cf van */
-    display:block;
-    clear:both;
-    content:'';
-}
-
-.tab-links li {
-    margin: 10px 1px 1px 10px;
-    float:left;
-}
-
-.tab-links a {
-    background-image: url(../media/button.png);
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: 150px;
-    padding: 15px 32px 30px 32px;
-    text-align: center;
-    width: 80px;
-    display:inline-block;
-    font-size:16px;
-    font-weight:600;
-    color: #4c4c4c;
-    transition:all linear 0.15s;
-}
-
-.tab-links a:hover {
-    color:rgba(182, 181, 153, 2);
-    text-decoration:none;
-}
-
-li.active a, li.active a:hover {
-    color:rgba(182, 181, 153, 2);
-}
-
-.tab {
-    display:none;
-}
-
-.tab.active {
-    display:block;
-}
-
-/* LEADERBOARD.HTML */
-
-#wrap h1 {
-    padding-top: 100px;
 }
 
 
