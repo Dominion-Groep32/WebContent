@@ -1,130 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dominion: play</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/screen.css" type="text/css"/>
-    <link rel="stylesheet" href="assets/css/gameDeck.css" type="text/css"/>
+<meta charset="UTF-8">
+<title>Dominion: play</title>
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+<link rel="stylesheet" href="assets/css/screen.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/gameDeck.css" type="text/css" />
 
 </head>
 <body>
 
 
-<!-- TODO: aside van maken -->
-<a href="index.html" id="confirm">
-    <img src="assets/media/building-3.png" id="home" alt="home">
-</a>
+	<!-- TODO: aside van maken -->
+	<a href="index.html" id="confirm"> <img
+		src="assets/media/building-3.png" id="home" alt="home">
+	</a>
 
-<div id="boxes">
-    <div id="dialog" class="window">
+	<div id="boxes">
+		<div id="dialog" class="window"></div>
+	</div>
 
-    </div>
-</div>
+	<div class="wrap">
+		<section id="step1">
+			<!--TODO: geef deze sectie wel een titel en verander-->
+			<form action="#" method="post">
 
-<div class="wrap">
-    <section id="step1"> <!--TODO: geef deze sectie wel een titel en verander-->
-        <form action="#" method="post">
+				<fieldset>
+					<h1>Select your type of game</h1>
 
-            <fieldset>
-                <h1>Select your type of game</h1>
+					<div class="wrapper">
+						<input type="radio" id="classic" value="classic" name="gameType"
+							checked="checked" required /> <label for="classic">Classic</label>
 
-                <div class="wrapper">
-                    <input type="radio" id="classic" value="classic" name="gameType" checked="checked" required/>
-                    <label for="classic">Classic</label>
+						<input type="radio" id="expansion" value="expansion"
+							name="gameType" required /> <label for="expansion">Expansion</label>
+					</div>
 
-                    <input type="radio" id="expansion" value="expansion" name="gameType" required/>
-                    <label for="expansion">Expansion</label>
-                </div>
+					<h1>Select your number of players</h1>
 
-                <h1>Select your number of players</h1>
+					<div id="numberOfPlayers"></div>
 
-                <div id="numberOfPlayers">
-                </div>
+					<h1>Give your players a name</h1>
 
-                <h1>Give your players a name</h1>
+					<div id="nameOfPlayers"></div>
 
-                <div id="nameOfPlayers">
-                </div>
+					<button type="submit" id="submitPlayers">Let's play!</button>
+				</fieldset>
+			</form>
+		</section>
+		<section id="step2" class="hide">
 
-                <button type="submit" id="submitPlayers">Let's play!</button>
-            </fieldset>
-        </form>
-    </section>
-    <section id="step2" class="hide">
+			<!--TODO:zet hier een H1 maar hide hem: screenreaders -->
 
-        <!--TODO:zet hier een H1 maar hide hem: screenreaders -->
+			<div id="container">
+				<ul id="left">
+					<li id="spelerInfo">
+						<ul>
+							<li id="usernames"></li>
+							<li id="kaartNaam"></li>
+							<li id="infoKaart"></li>
+						</ul>
+					</li>
 
-        <div id="container">
-            <div id="left">
-            	<div id="spelerInfo">
-            		<div id="usernames"></div>
-            		<div id="kaartNaam"></div>
-            		<div id="infoKaart"></div>
-            		
-            	</div>
-                
-	            <div id="victoryCards">
-	                <h1>Victorycards</h1>
-	                <div class="overwinning1">
-	                    <em>20</em>
-	                    <a href="#" id="provincie"><img src="images/small/provincie.png"></a>
-	                </div><br>   
-	                <div class="overwinning2">
-	                    <em>40</em>
-	                    <a href="#" id="hertogdom"><img src="images/small/hertogdom.png"></a>
-	                </div><br>
-	                <div class="overwinning2">
-	                    <em>60</em>
-	                    <a href="#" id="landgoed"><img src="images/small/landgoed.png"></a>
-	                </div><br>
-	            </div>
 
-            </div>
+					<li>
+						<ul id="victoryCards">
+							<li><span class="title">Victorycards</span></li>
+							<li class="overwinning1"><span>20</span> <a href="#"
+								id="provincie"><img src="images/small/provincie.png"></a>
+							</li>
+							<br>
+							<li class="overwinning2"><span>40</span> <a href="#"
+								id="hertogdom"><img src="images/small/hertogdom.png"></a>
+							</li>
+							<br>
+							<li class="overwinning2"><span>60</span> <a href="#"
+								id="landgoed"><img src="images/small/landgoed.png"></a></li>
+							<br>
+						</ul>
+					</li>
+				</ul>
 
-            <div id="remainingCards">
-                <h1>Remaining cards</h1>
-                <img src="images/back.jpg" id="back">
-                <img src="images/take.jpg" id="take">
-                <img src="images/trash.jpg" id="trash">
-            </div>
 
-            <div id="middle">
-                <h1>Actioncards</h1>
 
-                <div id="deckCards"></div>
-                <div id="message"></div>
-                <div id="playedCards"></div>
-                <div id="handCards"><h1>Cards in hands</h1></div>
-                <button id="playMoney">Play treasures</button>
-                <button id="endTurn">End turn</button>
-            </div>
+				<ul id="remainingCards">
+					<li><span class="title">Remaining cards</span></li>
+					<li><img src="images/back.jpg" id="back"><br></li>
+					<li><img src="images/take.jpg" id="take"></li>
+					<li><img src="images/trash.jpg" id="trash"></li>
+				</ul>
 
-            <div id="right">
-                <h1>Treasurecards</h1>
-                <div class="geldKaart1">
-                    <em>20</em>
+
+				<ul id="middle">
+                <li><span class="title">Actioncards</span></li>
+                <li id="deckCards"></li>
+                <li id="message"></li>
+                <li id="playedCards"></li>
+                <li id="handCards"></li>
+                <li>
+                    <button id="playMoney">Play treasures</button>
+                </li>
+                <li>
+                    <button id="endTurn">End turn</button>
+                </li>
+            </ul>
+
+				<ul id="right">
+                <li><span class="title">Treasurecards</span></li>
+                <li class="geldKaart1">
+                    <span id="12counter">10</span>
                     <a href="#" id="goudKaart"><img src="images/small/goud.png"></a>
-                </div>          
-                <div class="geldKaart2">
-                    <em>40</em>
+                </li>
+                <li class="geldKaart2">
+                    <span id="11counter">10</span>
                     <a href="#" id="zilverKaart"><img src="images/small/zilver.png"></a>
-                </div>
-                <div class="geldKaart3">
-                    <em>60</em>
-                    <a href="#" id="vloekKaart"><img src="images/small/koper.png"></a>
-                </div>
-                <div class="vloekKaart">
-                    <em>10</em>
+                </li>
+                <li class="geldKaart3">
+                    <span id="10counter">10</span>
+                    <a href="#" id="koperKaart"><img src="images/small/koper.png"></a>
+                </li>
+                <li class="vloek">
+                    <span id="16counter">10</span>
                     <a href="#" id="vloekKaart"><img src="images/small/vloek.png"></a>
-                	<div id="options"></div>
-           		</div>
-        	</div>
+                </li>
+                <li id="options"></li>
+            </ul>
         </div>
-    </section>
-</div>
+				
+				
+		</section>
+	</div>
 
-<script src="assets/js/jquery-2.1.4.min.js"></script>
-<script src="assets/js/script.js"></script>
+	<script src="assets/js/jquery-2.1.4.min.js"></script>
+	<script src="assets/js/script.js"></script>
 </body>
 </html>

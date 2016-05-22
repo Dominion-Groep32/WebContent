@@ -23,43 +23,40 @@ var showAlert = function() {
 	return window.confirm("Are you sure?");
 }
 
-// Quicktutorial op scherm laten verschijnen
+//Quicktutorial op scherm laten verschijnen
 var quickTutorial = function() {
 
-	var id = '#dialog';
+    var id = '#dialog';
 
-	// Get the screen height and width
-	var popupHeight = $(document).height();
-	var popupWidth = $(window).width();
+    //Get the screen height and width
+    var popupHeight = $(document).height();
+    var popupWidth = $(window).width();
 
-	// Set height and width to popup to fill up the whole screen
-	$('#popup').css({
-		'width' : popupWidth,
-		'height' : popupHeight
-	});
+    //Set height and width to popup to fill up the whole screen
+    $('#popup').css({'width': popupWidth, 'height': popupHeight});
 
-	// transition effect
-	$('#popup').fadeIn(1000);
-	$('#popup').fadeTo("slow", 0.8);
+    //transition effect
+    $('#popup').fadeIn(1000);
+    $('#popup').fadeTo("slow", 0.8);
 
-	// Get the window height and width
-	var winH = $(window).height();
-	var winW = $(window).width();
+    //Get the window height and width
+    var winH = $(window).height();
+    var winW = $(window).width();
 
-	// Set the popup window to center
-	$(id).css('top', winH / 2 - $(id).height() / 2);
-	$(id).css('left', winW / 2 - $(id).width() / 2);
+    //Set the popup window to center
+    $(id).css('top', winH / 2 - $(id).height() / 2);
+    $(id).css('left', winW / 2 - $(id).width() / 2);
 
-	// transition effect
-	$(id).fadeIn(2000);
-	$(".wrap").addClass('blur');
+    //transition effect
+    $(id).fadeIn(2000);
+    $(".wrapper").addClass('blur');
 
-	// if popup is clicked
-	$('.window').click(function() {
-		$(this).hide();
-		$('.window').hide();
-		$(".wrap").removeClass('blur');
-	});
+    //if popup is clicked
+    $('.window').click(function () {
+        $(this).hide();
+        $('.window').hide();
+        $(".wrapper").removeClass('blur');
+    });
 
 };
 
@@ -118,7 +115,7 @@ var kaartenInHand = function(response) {
 	var i;
 	for (i in response) {
 		var html = '';
-		var src = 'images/' + response[i] + '.jpg';
+		var src = 'images/' + response[i] + '.png';
 		html += '<img alt="' + response[i] + '"  title="' + response[i]
 				+ '" src="' + src + '"  id="' + response[i] + '"/>';
 		$("#handCards").append(html);
@@ -158,7 +155,7 @@ var toonHuidigSpeelVeld = function(response) {
 	var i;
 	for (i in response) {
 		var html = '';
-		var src = 'images/' + response[i] + '.jpg';
+		var src = 'images/' + response[i] + '.png';
 		html += '<img alt="' + response[i] + '"  title="' + response[i]
 				+ '" src="' + src + '"  id="' + response[i] + '"/>';
 		$("#playedCards").append(html);
@@ -188,6 +185,13 @@ var huidigeStatus = function() {
 	geefHuidigeWaarden();
 }
 
+var testfunctie = function(){
+	var everyChild = document.querySelectorAll("#deckCards img");
+	for (var i = 0; i<everyChild.length; i++) {
+	    everyChild[i].classList.addClass('glowKaart');
+	}
+}
+
 
 // -------------------AJAX-------------------
 
@@ -212,6 +216,25 @@ var spelersOpslaan = function(e) {
 		geefHuidigeWaarden();
 	});
 }
+
+var geefKaartenDieJeKuntKopen = function() {
+	var parameters = {
+		operation : "KaartenDieJeKuntKopen"
+	};
+
+	$.ajax({
+		url : 'http://localhost:8080/Dominion/DominionServlet',
+		data : parameters,
+		type : 'GET'
+	}).done(function(response) {
+		
+		var result = JSON.parse(response);
+		console.log(result);
+		
+	});
+}
+
+
 
 var stapelsMaken = function() {
 	var parameters = {
@@ -290,6 +313,8 @@ var actieKaarten = function(e) {
 		var result = JSON.parse(response);
 		actieKaartenGeneren(result);
 		stapelsMaken();
+		geefKaartenDieJeKuntKopen();
+		
 
 	});
 }
@@ -412,6 +437,9 @@ $(document).ready(function() {
 	$('body').on('mouseover', '#handCards img ', geefInfoOverKaart);
 	$('body').on('click', '#deckCards img', kaartKopen);
 	$('body').on('click', '#deckCards img', kaartGlow);
+	$('body').on('click', '#handCards img', geefKaartenDieJeKuntKopen);
 	$('body').on('click', '#handCards img ', actieUitvoeren);
+	$('body').on('click', '#deckCards img', testfunctie);
+	
 
 });

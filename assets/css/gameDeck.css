@@ -46,31 +46,34 @@ img {
 }
 
 /*************TITELS*********************/
-h1 #step2 {
+.title {
     color: black;
     margin-top: 5px;
     margin-left: 5%;
     font-weight: 800;
 }
 
-em {
-	color: white;
+#middle .title {
+    margin-left: 40%;
 }
 
-#middle h1{
-    margin-left: 34%;
-}
-
-#right h1 {
-    margin-left: -4%;
+#right .title {
+    margin-left: 3%;
+    color: white;
 }
 
 
-#handCards h1 {
+#handCards .title {
     margin-left: 23%;
 }
 
+#remainingCards .title {
+    margin-left: 1%;
+}
 
+#victoryCards .title {
+    margin-left: 23%;
+}
 /*************** LEFT *******************/
 #left {
     width: 20%;
@@ -96,10 +99,25 @@ em {
 	margin-top: 15px;
 }
 
-#usernames, #infoKaart, #kaartNaam {
+#usernames, #infoKaart {
 	margin-left: 40px;
 	width: 206px;
 	line-height: 20px;
+}
+
+#victoryCards {
+    margin-left: 80%;
+}
+
+#victoryCards img {
+    width: 169%;
+    display: block;
+    height: 100%;
+    margin-top: -40%;
+}
+
+#provincie img {
+	margin-top: -15%;
 }
 
 /*************** MIDDLE *******************/
@@ -107,6 +125,7 @@ em {
     width: 60%;
     height: 100%;
     margin-left: 27.5%;
+    margin-top: 1%;
 }
 
 #middle img {
@@ -166,15 +185,15 @@ em {
     height: 80px;
     width: 75px;
     position: absolute;
-    right: 295px;
+    right: 388px;
 }
 
 #playMoney {
-    bottom: 15px;
+    bottom: 33px;
 }
 
 #endTurn {
-    bottom: 95px;
+    bottom: 123px;
 }
 
 
@@ -186,16 +205,17 @@ em {
     position: absolute;
     bottom: 0px;
     margin-left: 98px;
-    width: 82%;
+    width: 84%;
 }
 
 #remainingCards img {
-	width: 10%;
+	width: 9%;
 }
 
 #playedCards {
-	position: absolute;
-     margin-top: 20%;
+	 position: absolute;
+     margin-top: 23%;
+     width: 50%;
 }
 
 /*************** RIGHT *******************/
@@ -211,31 +231,22 @@ em {
     display: block;
     height: 100%;
     margin-top: -11%;
+    padding-top: 8%;
 }
 
-#victoryCards {
-    margin-left: 80%;
-}
-
-#victoryCards img {
-    width: 169%;
-    display: block;
-    height: 100%;
-    margin-top: -40%;
-}
 
 /*************** QUICK TUTORIAL *******************/
-#boxes .window {
+#popupbox .window {
     position:absolute;
     left:0;
     top:0;
-    width:500px;
+    width:500px;sk
     height:300px;
     display:none;
     z-index:9999;
     padding:20px;
 }
-#boxes #dialog {
+#popupbox #dialog {
     width: 900px;
     height: 810px;
     padding: 0px 10px 10px 440px;
@@ -248,6 +259,7 @@ em {
     position: relative;
     bottom: 175%;
     display: inline-block;
+    color: white;
 }
 
 #left em {
