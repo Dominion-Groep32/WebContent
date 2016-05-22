@@ -96,7 +96,7 @@ em {
 	margin-top: 15px;
 }
 
-#usernames, #infoKaart {
+#usernames, #infoKaart, #kaartNaam {
 	margin-left: 40px;
 	width: 206px;
 	line-height: 20px;
@@ -195,7 +195,7 @@ em {
 
 #playedCards {
 	position: absolute;
-     margin-top: 100px;
+     margin-top: 20%;
 }
 
 /*************** RIGHT *******************/
