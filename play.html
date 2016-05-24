@@ -10,19 +10,38 @@
 </head>
 <body>
 
+	<aside>
+		<!-- index.html -->
+		<a href="index.html" id="confirm"> <img
+			src="assets/media/building-3.png" id="home" alt="home">
+		</a>
+	</aside>
 
-	<!-- TODO: aside van maken -->
-	<a href="index.html" id="confirm"> <img
-		src="assets/media/building-3.png" id="home" alt="home">
-	</a>
-
-	<div id="boxes">
+	<div id="popupbox">
 		<div id="dialog" class="window"></div>
 	</div>
 
-	<div class="wrap">
+	<div id="secretDiv" class="hide">
+		<div id="alert">
+			<p>Wat wil je doen?</p>
+			<ul>
+				<li id="doorgaan">Verder spelen!</li>
+				<li id="stoppen">Ik wil stoppen!</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="kiesKaartAndereSpeler" class="hide">
+		<div id="speelVeld">
+		<p id="berichtActie"></p>
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="wrapper">
 		<section id="step1">
-			<!--TODO: geef deze sectie wel een titel en verander-->
 			<form action="#" method="post">
 
 				<fieldset>
@@ -50,7 +69,7 @@
 		</section>
 		<section id="step2" class="hide">
 
-			<!--TODO:zet hier een H1 maar hide hem: screenreaders -->
+			<h1 class="hide">Gamedeck</h1>
 
 			<div id="container">
 				<ul id="left">
@@ -62,72 +81,55 @@
 						</ul>
 					</li>
 
-
 					<li>
 						<ul id="victoryCards">
 							<li><span class="title">Victorycards</span></li>
-							<li class="overwinning1"><span>20</span> <a href="#"
-								id="provincie"><img src="images/small/provincie.png"></a>
-							</li>
-							<br>
-							<li class="overwinning2"><span>40</span> <a href="#"
-								id="hertogdom"><img src="images/small/hertogdom.png"></a>
-							</li>
-							<br>
-							<li class="overwinning2"><span>60</span> <a href="#"
-								id="landgoed"><img src="images/small/landgoed.png"></a></li>
-							<br>
+							<li><span id="15counter"></span> <img id="provincie"
+								src="images/small/provincie.png"></li>
+
+							<li><span id="14counter"></span> <img id="hertogdom"
+								src="images/small/hertogdom.png"></li>
+							<li><span id='13counter'></span> <img id="landgoed"
+								src="images/small/landgoed.png"></li>
 						</ul>
 					</li>
 				</ul>
 
-
-
 				<ul id="remainingCards">
 					<li><span class="title">Remaining cards</span></li>
-					<li><img src="images/back.jpg" id="back"><br></li>
+					<li><img src="images/back.jpg" id="back"></li>
 					<li><img src="images/take.jpg" id="take"></li>
 					<li><img src="images/trash.jpg" id="trash"></li>
 				</ul>
 
-
 				<ul id="middle">
-                <li><span class="title">Actioncards</span></li>
-                <li id="deckCards"></li>
-                <li id="message"></li>
-                <li id="playedCards"></li>
-                <li id="handCards"></li>
-                <li>
-                    <button id="playMoney">Play treasures</button>
-                </li>
-                <li>
-                    <button id="endTurn">End turn</button>
-                </li>
-            </ul>
+					<li><span class="title">Actioncards</span></li>
+					<li id="deckCards"></li>
+					<li id="message"></li>
+					<li id="playedCards" class="geenGlow"></li>
+					<li id="handCards" class="geenGlow"><span>Cards in
+							hands</span></li>
 
-				<ul id="right">
-                <li><span class="title">Treasurecards</span></li>
-                <li class="geldKaart1">
-                    <span id="12counter">10</span>
-                    <a href="#" id="goudKaart"><img src="images/small/goud.png"></a>
-                </li>
-                <li class="geldKaart2">
-                    <span id="11counter">10</span>
-                    <a href="#" id="zilverKaart"><img src="images/small/zilver.png"></a>
-                </li>
-                <li class="geldKaart3">
-                    <span id="10counter">10</span>
-                    <a href="#" id="koperKaart"><img src="images/small/koper.png"></a>
-                </li>
-                <li class="vloek">
-                    <span id="16counter">10</span>
-                    <a href="#" id="vloekKaart"><img src="images/small/vloek.png"></a>
-                </li>
-                <li id="options"></li>
-            </ul>
-        </div>
-				
-				
+					<li>
+						<button id="playMoney">Play treasures</button>
+					</li>
+					<li>
+						<button id="endTurn">End turn</button>
+					</li>
+				</ul>
+
+				<ul id="treasureCards">
+					<li><span class="title">Treasurecards</span></li>
+					<li class="geldKaart1"><span id="12counter"></span> <img
+						id="goud" src="images/small/goud.png" /></li>
+					<li class="geldKaart2"><span id="11counter"></span> <img
+						id="zilver" src="images/small/zilver.png" /></li>
+					<li class="geldKaart3"><span id="10counter"></span> <img
+						id="koper"  src="images/small/koper.png" /></li>
+					<li class="vloek"><span id="16counter"></span> <img id="vloek"
+						src="images/small/vloek.png" /></li>
+				</ul>
+			</div>
 		</section>
 	</div>
 
