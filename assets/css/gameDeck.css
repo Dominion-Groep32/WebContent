@@ -31,7 +31,7 @@ body {
 img {
    
     padding-bottom: 5px;
-    width: 108px;
+    width: 150px;
 }
 
 .hide {
@@ -50,7 +50,7 @@ img {
 
 /*************TITELS*********************/
 .title {
-    color: black;
+    color: beige;
     margin-top: 5px;
     margin-left: 5%;
     font-weight: 800;
@@ -63,11 +63,6 @@ img {
 #treasureCards .title {
     margin-left: 3%;
 }
-
-#remainingCards .title, #treasureCards .title {
-	color: white;
-}
-
 
 #handCards .title {
     margin-left: 23%;
@@ -93,16 +88,13 @@ img {
     background-image: url("../media/infoKaartPerkament.png");
     background-size: 100% 90%;
     background-repeat: no-repeat;
-    height: 485px;
+    height: 561px;
     width: 285px;
+    margin-top: 1%;
 }
 
 #usernames {
 	margin-top: 75px;
-}
-
-#back {
-	float: left;
 }
 
 #infoKaart {
@@ -121,7 +113,7 @@ img {
 }
 
 #victoryCards img {
-    width: 169%;
+    width: 186%;
     display: block;
     height: 100%;
     margin-top: -60%;
@@ -157,28 +149,6 @@ img {
     width: 18%;
 }
 
-#handCards {
-    position: fixed;
-    bottom: 0%;
-    display: inline-block;
-    width: 75%;
-    margin-left: 2%;
-}
-
-#handCards img {
-    width: 10%;
-    padding-left: 1%;
-}
-
-#handCards img:hover {
-	border: 1px solid green;
-}
-
-
-#take {
-    float: right;
-}
-
 #playMoney, #endTurn {
     font-family: 'Chantilli', "Times New Roman", serif;
     background-image: url(../media/speelKaartKnop.png);
@@ -206,24 +176,7 @@ img {
     color: white;
 }
 
-#remainingCards {
-    position: absolute;
-    bottom: 0.5%;
-    margin-left: 8.5%;
-    width: 84%;
-}
-
-#remainingCards img {
-	width: 8.5%;
-}
-
-#playedCards {
-	 position: absolute;
-     margin-top: 23%;
-     width: 50%;
-}
-
-/*Glowing card*/
+/******Glowing card effect****/
 @-webkit-keyframes glowing {
   0% { background-color: #008000; -webkit-box-shadow: 0 0 8px #008000; }
   50% { background-color: #CCCCCC; -webkit-box-shadow: 0 0 15px #CCCCCC; }
@@ -252,7 +205,22 @@ img {
   animation: glowing 1500ms infinite;
 }
 
+/*************** remainingCards *******************/
+#remainingCards {
+    position: absolute;
+    bottom: 0.5%;
+    margin-left: 7.5%;
+    width: 82.3%;
+}
 
+#back {
+	margin-top: 0%;
+	float: left;
+}
+
+#take {
+    float: right;
+}
 /*************** treasureCards - right *******************/
 #treasureCards {
     height: 100%;
@@ -262,19 +230,18 @@ img {
 }
 
 #treasureCards img {
-    width: 35%;
+    width: 41%;
     display: block;
     height: 100%;
     margin-top: -13%;
 }
-
 
 /*************** QUICK TUTORIAL *******************/
 #popupbox .window {
     position:absolute;
     left:0;
     top:0;
-    width:500px;sk
+    width:500px;
     height:300px;
     display:none;
     z-index:9999;
@@ -288,7 +255,6 @@ img {
 }
 
 /*************** ALERT *******************/ 
-
 #secretDiv {
     background-image:  url("../media/papyrus.png");
     background-repeat: no-repeat;
@@ -306,14 +272,6 @@ img {
 	 margin-right: 54%;
 }
 
-#stoppen {
-	margin-left: 10%;;
-}
-
-#doorgaan {
-	margin-left: 25%;
-}
-
 #stoppen,#doorgaan{
     position: absolute;
     font-size: 1.5rem;
@@ -324,6 +282,13 @@ img {
 	cursor: pointer;
 }
 
+#stoppen {
+	margin-left: 10%;;
+}
+
+#doorgaan {
+	margin-left: 25%;
+}
 
 /***************KIES KAART ANDERE SPELER-VELDJE********************/
 
@@ -336,13 +301,65 @@ img {
     z-index:9999;
 }
 
-#speelVeld p {
-	margin-left: 32%;
-	margin-top: 9%;
-	font-size: 3rem;
+#berichtActie {
+	width: 52%;
+	margin-left:auto;
+	margin-right: auto;
+	font-size:2.5rem;
+	margin-top:7%;
 }
 
+#speelVeld {
+	margin-left:340px;
+	margin-top:200px;	
+}
 
+#speelVeld img{
+	width:10%;
+}
+
+#bevestig {
+	margin-left: 35%;
+	margin-top: 5%;
+	font-size: 2rem;
+}
+
+/*********** ACCORDION EFFECT **************/
+#hand, #played  {
+    position: absolute;
+    left: 28%;
+    width: 44%;
+    overflow: hidden;
+}
+
+#hand {
+	top: 75%;
+	}
+
+#played {
+    top: 46%;
+}
+
+.accordion li {
+    display: block;
+    width: 100px;
+    float: left;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.accordion li img {
+    display: block;
+}
+
+.accordion ul:hover li {
+    width: 90px;
+}
+
+.accordion ul li:hover {
+    width: 140px;
+}
 
 /*************** COUNTERS *******************/
 #left span, #deckCards span, #treasureCards span {
@@ -350,7 +367,7 @@ img {
     position: relative;
     bottom: 175%;
     display: inline-block;
-    color: white;
+    color: beige;
 }
 
 #left .title, #treasureCards .title {
@@ -374,5 +391,6 @@ img {
 	right: 5%;
 	padding: 4%;
 }
+
 
 

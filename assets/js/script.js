@@ -15,7 +15,7 @@ var dataStorage = function(event) {
 	};
 };
 
-var testerVoorAlert = function (idNaam ,tweedeIdNaam){
+var toonVoorAlert = function (idNaam ,tweedeIdNaam){
 		var id = ('#'+idNaam);
 		var tweedeId = ('#'+tweedeIdNaam);
 	    $(tweedeId).css({'width': $(window).width(), 'height':  $(document).height()});
@@ -27,7 +27,7 @@ var testerVoorAlert = function (idNaam ,tweedeIdNaam){
 };
 
 var uitlegSpel = function() {
-    testerVoorAlert("dialog","");
+    toonVoorAlert("dialog","");
     $('.window').click(function () {
         $(this).hide();
         $('.window').hide();
@@ -36,12 +36,12 @@ var uitlegSpel = function() {
 };
 
 var alertPopup = function() {
-	testerVoorAlert("alert","secretDiv");
+	toonVoorAlert("alert","secretDiv");
 	};
 	
 var kiesKaartAnder = function(e){
 	e.preventDefault();
-	testerVoorAlert("speelVeld","kiesKaartAndereSpeler");
+	toonVoorAlert("speelVeld","kiesKaartAndereSpeler");
 };
 
 	
@@ -71,9 +71,7 @@ var aantalSpelersOpvragen = function() {
 
 var generateSrc = function() {
 	for (var i = 2; i <= 4; i++) {
-		$('#numberOfPlayers').append(
-				'<label><input type="radio" required value=' + [ i ]+ ' name="number"/><img src="assets/media/' + [ i ]+ '.png"/></label>');
-	};
+		$('#numberOfPlayers').append('<label><input type="radio" required value=' + [ i ]+ ' name="number"/><img src="assets/media/' + [ i ]+ '.png"/></label>');};
 };
 
 var taalAanpassen = function () {
@@ -92,7 +90,7 @@ var toonKaartenInHand = function(response) {
 	for (i in response) {
 		var html = '';
 		var src = 'images/' + response[i] + '.png';
-		html += '<img alt="' + response[i] + '"  title="' + response[i]+ '" src="' + src + '"  id="' + response[i] + '"/>';
+		html += '<li><a href="#"><img alt="' + response[i] + '"  title="' + response[i]+ '" src="' + src + '"  id="' + response[i] + '"/></a></li>';
 		$("#handCards").append(html);
 	};
 };
@@ -124,7 +122,7 @@ var toonHuidigSpeelVeld = function(response) {
 	for (i in response) {
 		var html = '';
 		var src = 'images/' + response[i] + '.png';
-		html += '<img alt="' + response[i] + '"  title="' + response[i]+ '" src="' + src + '"  id="' + response[i] + '"/>';
+		html += '<li><a href="#"><img alt="' + response[i] + '"  title="' + response[i]+ '" src="' + src + '"  id="' + response[i] + '"/></a></li>';
 		$("#playedCards").append(html);
 	};
 };
@@ -157,21 +155,24 @@ var verwijderGlowFunctie = function(naam){
 	for (var i = 0; i<alleIds.length; i++) {
 	    alleIds[i].classList.remove('glowKaart');
 	};
-	
-	//$('#treasureCards').siblings().removeClass('glowKaart');
 };
 
 var toonDeKaartenDieJeKuntKopen = function(response){
 	var i;
 	for (i in response){
+		if (response[i] == "koper"){
+			window.setInterval(function(){$(id).toggleClass('geldKaart3');},1000);
+		}
 		var id = ('#' + response[i]);
+		
 		var parent = ($(id).parent());
-	
-		if (!$(parent).hasClass("geenGlow")){
-					$(id).addClass('glowKaart');
-					window.setInterval(function(){$(id).toggleClass('glowKaart');},1000);
+		if (!$(parent).hasClass("geenGlow")){$(id).addClass('glowKaart');
+		window.setInterval(function(){$(id).toggleClass('glowKaart');},1000);
 		};
 	};
+	$('#playedCards').removeClass('glowKaart');
+	$('li a img').removeClass('glowKaart');
+	
 };
 
 
@@ -193,6 +194,45 @@ var terugNaarStart = function(){
 	javascript:location.href='index.html';
 };
 
+var specialeActieFunctie = function(response) {
+	$("#speelVeld").empty();
+	
+	var i = 0;
+	for (i in response) {
+		var html = '';
+		var src = 'images/' + response[i] + '.png';
+		html += '<img alt="' + response[i] + '"  title="' + response[i]	+ '" src="' + src + '"  id="' + response[i] + '"/>';
+		$("#speelVeld").append(html);
+		
+	};
+}
+var toonVorigeActies = function(response) {
+	console.log(response);
+	$('#berichtActie').empty();
+	$('#berichtActie').append(response[0]);
+	
+	var i = 1;
+	 for(var i=1 ; i<response.length;i++){
+		var html = '';
+		var src = 'images/' + response[i] + '.png';
+		html += '<img alt="' + response[i] + '"  title="' + response[i]	+ '" src="' + src + '"  id="' + response[i] + '"/>';
+		$("#speelVeld").append(html);
+		
+		
+	};
+}
+
+
+var uitgaan = function(){
+	 $('#kiesKaartAndereSpeler').addClass('hide');
+	    $(".wrapper").removeClass('blur');
+	    $('#kiesKaartAndereSpeler').fadeOut(1000);
+		$('#kiesKaartAndereSpeler').fadeTo("slow");
+		huidigeStatus();
+}
+
+
+
 
 // -------------------AJAX------------------- //
 
@@ -206,9 +246,8 @@ var spelersOpslaan = function(e) {
 	
 	var parameters = {spelers : spelers,operation : "spelerToevoegen"};
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
-		geefKaartenInHand();
 		geefActieKaarten();
-		geefHuidigeWaarden();
+		huidigeStatus();
 	});
 };
 
@@ -227,15 +266,25 @@ var stapelsMaken = function() {
 };
 
 var actieUitvoeren = function() {
+	$('#berichtActie').empty();
+	$('#speelVeld').empty();
 	var gekozenKaart = this.id;
-	if (gekozenKaart == "landgoed") {
-		return;
-	};
+	
 	var parameters = {kaart : gekozenKaart,operation : "actieUitvoeren"};
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
+		if(response.length !=0)
+		{var result = JSON.parse(response)
+			
+		if(result[0] == "speciaal" && result[3] == 'huidigeSpeler' ){
+			$('#berichtActie').append(result[2]);
+			toonVoorAlert("speelVeld","kiesKaartAndereSpeler");
+			doeSpecialeActieFunctie();
+		};}
+		
 		huidigeStatus();
 		geefKaartenDieJeKuntKopen();
-		toonDeKaartenDieJeKuntKopen();
+		
+		
 	});
 };
 
@@ -250,12 +299,12 @@ var geefKaartenInHand = function() {
 var geefHuidigeWaarden = function(e) {
 	var parameters = {operation : "huidigeWaarden"};
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
+		console.log(response);
 		infoSpeler(JSON.parse(response));
 	});
 };
 var geefActieKaarten = function(e) {
 	var parameters = {operation : "actieKaartenGeneren"};
-
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
 		actieKaartenGeneren(JSON.parse(response));
 		stapelsMaken();
@@ -264,7 +313,6 @@ var geefActieKaarten = function(e) {
 
 var huidigSpeelVeld = function() {
 	var parameters = {operation : "toonSpeelVeld"};
-
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
 		toonHuidigSpeelVeld(JSON.parse(response));
 	});
@@ -272,10 +320,11 @@ var huidigSpeelVeld = function() {
 
 var geldKaartenVanHandNaarSpeelVeld = function() {
 	var parameters = {operation : "brengGeldKaartenUitHandaarSpeelVeld"};
-
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
-		geefKaartenDieJeKuntKopen();
+		
 		geefHuidigeWaarden();
+		huidigeStatus();
+		geefKaartenDieJeKuntKopen();
 	});
 };
 
@@ -297,8 +346,6 @@ var trekKaartInHand = function() {
 
 var geefInfoOverKaart = function(response) {
 	var gekozenKaart = $(this).attr("id");
-
-	//alert(gekozenKaart);
 	var parameters = {kaart : gekozenKaart,operation : "infoOphalen"};
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
 		$("#infoKaart").append(JSON.parse(response));
@@ -308,10 +355,41 @@ var geefInfoOverKaart = function(response) {
 var stopBeurt = function(e) {
 	var parameters = {operation : "stopBeurt"};
 	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
-		$("#playedCards").empty();
 		geefKaartenInHand();
 		geefHuidigeWaarden();
 		verwijderGlow();
+		
+		
+	});
+};
+
+var geefActiesVorigeSpeler = function(){
+	var parameters = {operation : "vorigeActies"};
+	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
+		$("#speelVeld").empty();
+		toonVorigeActies(JSON.parse(response))
+		toonVoorAlert("speelVeld","kiesKaartAndereSpeler");
+		
+		
+	})
+		
+}
+
+var tweedeActieFase = function(){
+	var gekozenKaart = $(this).attr("id");
+	var parameters = {kaart: gekozenKaart,operation : "tweedeActieUitvoeren"};
+	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
+		doeSpecialeActieFunctie();
+		});
+	};
+
+
+var doeSpecialeActieFunctie = function() {
+	var parameters = {operation : "special"};
+
+	$.ajax({url : '/Dominion/DominionServlet',data : parameters,type : 'GET'}).done(function(response) {
+		var result = JSON.parse(response);
+		 specialeActieFunctie(JSON.parse(response));
 	});
 };
 
@@ -322,25 +400,24 @@ $(document).ready(function() {
 	taalAanpassen();
 
 	$('#numberOfPlayers').on('change', aantalSpelersOpvragen);
-	
 	$('#submitPlayers').on('click', spelersOpslaan);
 	$('#submitPlayers').on('click', doorgaanNaarSpeelVeld);
-	
+	$('#endTurn').on('click',geefActiesVorigeSpeler);
 	$('#endTurn').on('click', stopBeurt);
+	
 	$('#playMoney').on('click', geldKaartenVanHandNaarSpeelVeld);
-	$('#playMoney').on('click', huidigSpeelVeld);
-	$('#playMoney').on('click', geefKaartenInHand);
 
 	$('body').on('mouseover', stopInfo)
 	$('body').on('mouseover', '#deckCards img ,#handCards img,#victoryCards img,#treasureCards img', geefInfoOverKaart);
 	$('body').on('click', '#deckCards img,#victoryCards img,#treasureCards img', kaartKopen);
 	$('body').on('click', '#handCards img ', actieUitvoeren);
+	$('body').on('click', '#speelVeld img ', tweedeActieFase);
+	
 	
 	$('#home').on('click',toonDiv);
 	$('#stoppen').on('click',terugNaarStart);
 	$('#doorgaan').on('click',verbergDiv);
-	
-	$('#trash').on('click', kiesKaartAnder);
+	$('#bevestig').on('click',uitgaan);
 	
 	
 

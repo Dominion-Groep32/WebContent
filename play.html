@@ -32,12 +32,12 @@
 	</div>
 
 	<div id="kiesKaartAndereSpeler" class="hide">
+	<p id="berichtActie"></p>
 		<div id="speelVeld">
-		<p id="berichtActie"></p>
-			<ul>
-				<li></li>
-			</ul>
+		
+			
 		</div>
+		<p id="bevestig"> Ik ben klaar!</p>
 	</div>
 
 	<div class="wrapper">
@@ -97,8 +97,8 @@
 
 				<ul id="remainingCards">
 					<li><span class="title">Remaining cards</span></li>
-					<li><img src="images/back.jpg" id="back"></li>
 					<li><img src="images/take.jpg" id="take"></li>
+					<li><img src="images/back.jpg" id="back"></li>
 					<li><img src="images/trash.jpg" id="trash"></li>
 				</ul>
 
@@ -106,10 +106,6 @@
 					<li><span class="title">Actioncards</span></li>
 					<li id="deckCards"></li>
 					<li id="message"></li>
-					<li id="playedCards" class="geenGlow"></li>
-					<li id="handCards" class="geenGlow"><span>Cards in
-							hands</span></li>
-
 					<li>
 						<button id="playMoney">Play treasures</button>
 					</li>
@@ -117,6 +113,15 @@
 						<button id="endTurn">End turn</button>
 					</li>
 				</ul>
+				
+				<ul id="played" class="geenGlow accordion">
+					<ul id="playedCards" class="geenGlow"></ul>
+				</ul>
+				
+				<ul id ="hand" class="geenGlow accordion">
+   					 <ul id="handCards"  class="geenGlow"></ul>
+				</ul>
+				
 
 				<ul id="treasureCards">
 					<li><span class="title">Treasurecards</span></li>

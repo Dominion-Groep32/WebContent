@@ -25,7 +25,7 @@ body {
 }
 
 
-/*Home button (castle)*/ 
+/** Home button (castle) **/ 
 aside img {
     background: url("../media/button.png") no-repeat;
     background-size: 70px 50px;
@@ -55,7 +55,7 @@ button {
 }
 
 /*---------------------*/
-/*    index.HTML
+/*    INDEX.HTML
 /*---------------------*/
 figure {                            /*Dominion logo*/
     margin-top: 15px;
@@ -122,7 +122,6 @@ fieldset, .tab-content, #wrapper, #leaderboard {
 
 /*Number of players*/
 
-
 #numberOfPlayers {
     text-align: center;
 }
@@ -131,10 +130,11 @@ label + label {
     margin-left: 12px;
 }
 
-label > input{ /* HIDE RADIOBUTTON NUMBER OF PLAYERS*/
+label > input{ /* hide radiobutton number of players */
     visibility: hidden;
     position: absolute;
 }
+
 label > input + img:hover {
     cursor:pointer;
     opacity: 1;
@@ -271,7 +271,7 @@ label > input:checked + img {
 
 
 /*---------------------*/
-/* leaderboard.HTML
+/* LEADERBOARD.HTML
 /*---------------------*/
 #leaderboard h1 {
 	padding-top: 12%;
